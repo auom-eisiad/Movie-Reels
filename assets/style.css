@@ -1,0 +1,10 @@
+:root {
+    --fontfam: ;
+    --c1: ;
+    --w: #fff;
+    --b: #000;
+}
+
+* {
+    box-sizing: border-box;
+}
