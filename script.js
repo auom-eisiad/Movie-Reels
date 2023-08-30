@@ -6,6 +6,8 @@
 var movieForm = $('#movie-form');
 var userInput = $('#movie-name');
 var movieTitle = $('#title');
+var moviePlot = $('.plot');
+var movieRating = $('.rating');
 
 // event listener that takes user input
 movieForm.on('submit', function(event) {
@@ -30,6 +32,22 @@ var movieApi = function(input) {
         
         // updates the display title
         movieTitle.text(data.Title);
-
+        // updates the movie plot element
+        moviePlot.text(data.Plot);
+        // updates the critic review scores by going through the ratings object.     
+        const ratings = data.Ratings;
+            let ratingsHTML = '';
+            ratings.forEach(rating => {
+            const source = rating.Source;
+            const value = rating.Value;
+            const ratingHTML = `<p>${source}</p><p>Rating: ${value}</p>`;
+            ratingsHTML += ratingHTML;
+        });
+        // Display the ratings HTML in an element with the id rating
+        document.getElementById('rating').innerHTML = ratingsHTML;    
+            
+        
     });
+
 };
+
