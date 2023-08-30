@@ -23,8 +23,12 @@
 
     <header class="d-flex flex-row justify-content-around">
       <h1 class="text-center">Movie Reels</h1>
+
       <!-- <input type="button" value=""> -->
-      <button type="submit">Search for movies</button>
+      <form id="movie-form">
+        <input type="text" id="movie-name" placeholder="Search for movie">
+        <button type="submit" id="search"><i class="fas fa-search"></i></button>
+      </form>
     </header>
 
     <div class="row">
@@ -36,7 +40,7 @@
       </div>
 
       <main class="col-9 text-center border">
-        <h2>Display</h2>
+        <h2 id="title">Display</h2>
         <div></div>
 
       </main>
