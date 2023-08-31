@@ -31,7 +31,7 @@ var movieApi = function(input) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data)
+            // console.log(data)
         
             // updates the display title
             movieTitle.text(data.Title);
@@ -55,48 +55,28 @@ var movieApi = function(input) {
 };
 
 function moviePoster(input) {
-    // https://api.themoviedb.org/3/discover/movie?api_key=b935e23b4ae8daff658903f94d9e2c61
-    var posterAPI = "https://api.themoviedb.org/3/discover/movie?t=" + input + "&api_key=b935e23b4ae8daff658903f94d9e2c61";
+    // the api url for the poster 
+    var posterAPI = "https://api.themoviedb.org/3/search/movie?query=" + input + "&api_key=b935e23b4ae8daff658903f94d9e2c61";
 
-    
+    // api request for the movie poster
+    fetch(posterAPI)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        // Access the first movie in the response
+        var movie = data.results[0];
 
-    // https://api.themoviedb.org/3/movie/157336?api_key=b935e23b4ae8daff658903f94d9e2c61&append_to_response=videos,images
-    // https://api.themoviedb.org/3/movie/157336?api_key=b935e23b4ae8daff658903f94d9e2c61&append_to_response=videos
+        console.log(movie);
 
-//     fetch(posterAPI)
-//     .then(function(response) {
-//         return response.json();
-//     })
-//     .then(function(data) {
-//         // Access the first movie in the response
-//         var movie = data.results[0];
+        // Retrieve the poster image URL
+        var posterURL = "https://image.tmdb.org/t/p/w500" + movie.poster_path;
 
-//         console.log(movie);
+        // display the movie poster in the img element
+        moviePic.attr('src', posterURL);
+    })
+    .catch(function(error) {
+        console.log(error);
+    });
 
-//         // Retrieve the poster image URL
-//         var posterURL = "https://image.tmdb.org/t/p/w500" + movie.poster_path;
-
-//         // Use the posterURL to display the movie poster
-//         console.log(posterURL);
-//     })
-//     .catch(function(error) {
-//         console.log(error);
-//   });
-
-    // fetch(posterAPI)
-    // .then(function(response) {
-    // return response.json();
-    // })
-    // .then(function(data) {
-    // // Extract the movie poster URL from the response data
-    // var posterURL = data.results[0].poster_path;
-
-    // // Display the movie poster on your webpage or application
-    // var posterImage = document.createElement("img");
-    // posterImage.src = "https://image.tmdb.org/t/p/w500" + posterURL;
-    // document.body.appendChild(posterImage);
-    // })
-    // .catch(function(error) {
-    // console.log(error);
-    // });
 };
