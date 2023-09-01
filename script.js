@@ -8,15 +8,20 @@ var userInput = $('#movie-name');
 var movieTitle = $('#title');
 var moviePlot = $('.plot');
 var movieRating = $('.rating');
+var moviePic = $('.poster');
+var movTrailer = $('.trailer');
 
 // event listener that takes user input
 movieForm.on('submit', function(event) {
     event.preventDefault();
     var inputValue = userInput.val();
+
     // using .replace(/\s/g, "+") to replace the white space from the user input with "+" before adding to apiUrl
     var inputValue = inputValue.replace(/\s/g, "+");
 
-    movieApi(inputValue)
+    movieApi(inputValue);
+    moviePoster(inputValue);
+    movieTrailer(inputValue);
 });
 
 var movieApi = function(input) {
@@ -28,26 +33,63 @@ var movieApi = function(input) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data)
+            // console.log(data)
         
-        // updates the display title
-        movieTitle.text(data.Title);
-        // updates the movie plot element
-        moviePlot.text(data.Plot);
-        // updates the critic review scores by going through the ratings object.     
-        const ratings = data.Ratings;
-            let ratingsHTML = '';
-            ratings.forEach(rating => {
-            const source = rating.Source;
-            const value = rating.Value;
-            const ratingHTML = `<p>${source}</p><p>Rating: ${value}</p>`;
-            ratingsHTML += ratingHTML;
+            // updates the display title
+            movieTitle.text(data.Title);
+
+            // updates the movie plot element
+            moviePlot.text(data.Plot);
+
+            // updates the critic review scores by going through the ratings object.     
+            const ratings = data.Ratings;
+                let ratingsHTML = '';
+                ratings.forEach(rating => {
+                const source = rating.Source;
+                const value = rating.Value;
+                const ratingHTML = `<p>${source}</p><p>Rating: ${value}</p>`;
+                ratingsHTML += ratingHTML;
+            });
+
+            // Display the ratings HTML in an element with the id rating
+            document.getElementById('rating').innerHTML = ratingsHTML;   
         });
-        // Display the ratings HTML in an element with the id rating
-        document.getElementById('rating').innerHTML = ratingsHTML;    
-            
-        
+};
+
+// function for movie poster
+function moviePoster(input) {
+    // the api url for the poster 
+    var posterAPI = "https://api.themoviedb.org/3/search/movie?query=" + input + "&api_key=b935e23b4ae8daff658903f94d9e2c61";
+
+    // api request for the movie poster
+    fetch(posterAPI)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        // Access the first movie in the response
+        var movie = data.results[0];
+
+        // console.log(movie);
+
+        // Retrieve the poster image URL
+        var posterURL = "https://image.tmdb.org/t/p/w500" + movie.poster_path;
+
+        // display the movie poster in the img element
+        moviePic.attr('src', posterURL);
+    })
+    .catch(function(error) {
+        console.log(error);
     });
 
 };
 
+// function for movie trailer
+function movieTrailer(input) {
+
+    // Youtube api, still need to either fix or find another api to display trailer
+    var trailerAPI = "https://www.youtube.com/watch?search_query=" + input + "&key=AIzaSyCPwPkuOKdEBvPA0HbuhvkFs-xIAyb94Uc";
+    
+    // movTrailer.attr('src', trailerAPI);
+
+};

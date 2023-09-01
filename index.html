@@ -15,7 +15,10 @@
       integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" type="text/css" href="./assets/style.css">
+    <link rel="shortcut icon" type="icon" href="./assets/images/movie-icon.jpg"/>
+
+    <!-- added a shortcut icon as our website logo -->
+    <link rel="stylesheet" type="text/css" href="./assets/style.css"/>
     <title>Movie Reels</title>
   </head>
   
@@ -40,13 +43,25 @@
       </div>
 
       <main class="col-9 text-center border">
-        <h2 id="title">Display</h2>
         
+        <!-- movie title -->
+        <h2 id="title">Display</h2>
+
+        <!-- movie poster -->
+        <img class="poster" src="" alt="movie poster"/>
+        
+        <!-- movie plot -->
         <div class="plot">
         </div>
 
+        <!-- movie rating -->
         <div id="rating">
         </div>
+
+        <!-- movie trailer -->
+        <video class="trailer" width="320" height="240" controls autoplay>
+          <source src="" type="video/trailer" alt="movie trailer">
+        </video>
 
       </main>
     </div>
