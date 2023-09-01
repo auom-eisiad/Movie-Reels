@@ -9,6 +9,7 @@ var movieTitle = $('#title');
 var moviePlot = $('.plot');
 var movieRating = $('.rating');
 var moviePic = $('.poster');
+var movTrailer = $('.trailer');
 
 // event listener that takes user input
 movieForm.on('submit', function(event) {
@@ -20,6 +21,7 @@ movieForm.on('submit', function(event) {
 
     movieApi(inputValue);
     moviePoster(inputValue);
+    movieTrailer(inputValue);
 });
 
 var movieApi = function(input) {
@@ -54,6 +56,7 @@ var movieApi = function(input) {
         });
 };
 
+// function for movie poster
 function moviePoster(input) {
     // the api url for the poster 
     var posterAPI = "https://api.themoviedb.org/3/search/movie?query=" + input + "&api_key=b935e23b4ae8daff658903f94d9e2c61";
@@ -67,7 +70,7 @@ function moviePoster(input) {
         // Access the first movie in the response
         var movie = data.results[0];
 
-        console.log(movie);
+        // console.log(movie);
 
         // Retrieve the poster image URL
         var posterURL = "https://image.tmdb.org/t/p/w500" + movie.poster_path;
@@ -78,5 +81,15 @@ function moviePoster(input) {
     .catch(function(error) {
         console.log(error);
     });
+
+};
+
+// function for movie trailer
+function movieTrailer(input) {
+
+    // Youtube api, still need to either fix or find another api to display trailer
+    var trailerAPI = "https://www.youtube.com/watch?search_query=" + input + "&key=AIzaSyCPwPkuOKdEBvPA0HbuhvkFs-xIAyb94Uc";
+    
+    // movTrailer.attr('src', trailerAPI);
 
 };
