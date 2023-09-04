@@ -81,6 +81,7 @@ function moviePoster(input) {
 
         // display the movie poster in the img element
         moviePic.attr('src', posterURL);
+        moviePic.removeClass('d-none')
     })
     .catch(function(error) {
         console.log(error);
