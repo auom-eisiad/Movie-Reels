@@ -13,6 +13,8 @@ var movTrailerEl = $('iframe');
 var favIconEl = $('#favIcon') 
 var inputValue = ''
 
+var i = 0
+
 // event listener that takes user input
 movieForm.on('submit', function(event) {
     event.preventDefault();
@@ -110,17 +112,18 @@ function movieTrailer(input) {
 $( function() {
     $( "#sortable" ).sortable();
   } );
-
+  
+//   on clicking the favIcon it will generate a new li in the favorite list ul. Along with that it will create a unique id with the 'i' variable for saving locally
   favIconEl.on('click', function() {
-    console.log(inputValue)
-    var liElement = $('<li>').addClass('ui-state-default border border-2 rounded hover-element').text(inputValue)
-    $('#sortable').append(liElement)
-} )
-
-//   $(document).ready(function() {
-//     favEl.click(function() {
-//         var liElement = $('<li>').addClass('ui-state-default border border-2 rounded hover-element').text(userInput.val)
-//         $('#sortable').append(liElement)
-        
-//     })
-//   })
+      
+      var liElement = $('<li>').attr('id', 'list-' +i).addClass('ui-state-default border border-2 rounded hover-element').text(inputValue)
+      $('#sortable').append(liElement)
+      liElement.on('click', function() {
+        var textContent = $(this).text();
+        textContentWS = textContent.replace(/\s/g, "+");
+        movieApi(textContentWS);
+        moviePoster(textContentWS);
+        movieTrailer(textContentWS);
+    })
+      i++
+    } )
