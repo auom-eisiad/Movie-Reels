@@ -15,9 +15,12 @@
       integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
       crossorigin="anonymous"
     />
-    <link rel="shortcut icon" type="icon" href="./assets/images/movie-icon.jpg"/>
 
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    
+    <link rel="shortcut icon" type="icon" href="./assets/images/movie-icon.jpg"/>
     <!-- added a shortcut icon as our website logo -->
+    
     <link rel="stylesheet" type="text/css" href="./assets/style.css"/>
     <title>Movie Reels</title>
   </head>
@@ -34,11 +37,15 @@
       </form>
     </header>
 
+    <!-- favorite movie list -->
     <div class="row">
-      <div class="col-3 text-center border">
-        <h2>Watch list</h2>
-        <ul id="sortable" class="fav-list">
-          <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 1</li>
+      <div class="col-3 d-flex flex-column border border-1">
+        <h2 class="text-center">Watch list</h2>
+        <p>Sort your watch list!</p>
+        <ul id="sortable" class="fav-list container text-center align-self-center">
+          <li class="ui-state-default border border-2 rounded">Item 1</li>
+          <li class="ui-state-default border border-2 rounded justify-content-center">Item 2</li>
+         
         </ul>
       </div>
 
@@ -50,6 +57,9 @@
         <!-- movie poster -->
         <!-- added class='d-none'. This will hide the element till removed.  -->
         <img class="poster d-none" src="" alt="movie poster"/>
+
+        <!-- adding a favorite icon -->
+        <img id="favIcon" class="w-50px h-50px" src="assets/images/star icon.png" alt="favorites button icon">
         
         <!-- movie plot -->
         <div class="plot">
@@ -67,11 +77,13 @@
 
       </main>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
     integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="./script.js"></script>
     </body>
 

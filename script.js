@@ -107,3 +107,7 @@ function movieTrailer(input) {
         movTrailerEl.attr('src', trailerURL)
     });
 };
+
+$( function() {
+    $( "#sortable" ).sortable();
+  } );
