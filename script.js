@@ -12,8 +12,7 @@ var moviePic = $('.poster');
 var movTrailerEl = $('iframe');
 var favIconEl = $('#favIcon') 
 var inputValue = ''
-
-var i = 0
+var iteration = 0
 
 // event listener that takes user input
 movieForm.on('submit', function(event) {
@@ -115,15 +114,35 @@ $( function() {
   
 //   on clicking the favIcon it will generate a new li in the favorite list ul. Along with that it will create a unique id with the 'i' variable for saving locally
   favIconEl.on('click', function() {
-      
-      var liElement = $('<li>').attr('id', 'list-' +i).addClass('ui-state-default border border-2 rounded hover-element').text(inputValue)
-      $('#sortable').append(liElement)
-      liElement.on('click', function() {
+    
+    //   creates the li element for the favorite list
+    var liElement = $('<li>').attr('id', 'list-' +iteration).addClass('ui-state-default border border-2 rounded hover-element').text(inputValue)
+    
+    localStorage.setItem('list-' +iteration, inputValue)
+
+    $('#sortable').append(liElement)
+
+    liElement.on('click', function() {
+    var textContent = $(this).text();
+    textContentWS = textContent.replace(/\s/g, "+");
+    movieApi(textContentWS);
+    moviePoster(textContentWS);
+    movieTrailer(textContentWS);
+    })
+    iteration++
+    } )
+
+    // for loop that on page load iterates through the localStorage and then adds the list items to the favorites list. 
+for (var i = 0; i < localStorage.length;i++) {
+    movieName = localStorage.getItem('list-' + i)
+    var liElement = $('<li>').attr('id', 'list-' +i).addClass('ui-state-default border border-2 rounded hover-element').text(movieName)
+    $('#sortable').append(liElement)
+    liElement.on('click', function() {
         var textContent = $(this).text();
         textContentWS = textContent.replace(/\s/g, "+");
         movieApi(textContentWS);
         moviePoster(textContentWS);
         movieTrailer(textContentWS);
-    })
-      i++
-    } )
+        })
+    
+}
