@@ -9,19 +9,22 @@ var movieTitle = $('#title');
 var moviePlot = $('.plot');
 var movieRating = $('.rating');
 var moviePic = $('.poster');
-var movTrailer = $('.trailer');
+var movTrailerEl = $('iframe');
+var favIconEl = $('#favIcon') 
+var inputValue = ''
+var iteration = 0
 
 // event listener that takes user input
 movieForm.on('submit', function(event) {
     event.preventDefault();
-    var inputValue = userInput.val();
+    inputValue = userInput.val();
 
     // using .replace(/\s/g, "+") to replace the white space from the user input with "+" before adding to apiUrl
-    var inputValue = inputValue.replace(/\s/g, "+");
+    var inputValueWS = inputValue.replace(/\s/g, "+");
 
-    movieApi(inputValue);
-    moviePoster(inputValue);
-    movieTrailer(inputValue);
+    movieApi(inputValueWS);
+    moviePoster(inputValueWS);
+    movieTrailer(inputValueWS);
 });
 
 var movieApi = function(input) {
@@ -77,6 +80,8 @@ function moviePoster(input) {
 
         // display the movie poster in the img element
         moviePic.attr('src', posterURL);
+        moviePic.removeClass('d-none')
+        favIconEl.removeClass('d-none')
     })
     .catch(function(error) {
         console.log(error);
@@ -84,12 +89,60 @@ function moviePoster(input) {
 
 };
 
-// function for movie trailer
+// youtube function for movie trailer
 function movieTrailer(input) {
 
-    // Youtube api, still need to either fix or find another api to display trailer
-    var trailerAPI = "https://www.youtube.com/watch?search_query=" + input + "&key=AIzaSyCPwPkuOKdEBvPA0HbuhvkFs-xIAyb94Uc";
-    
-    // movTrailer.attr('src', trailerAPI);
+    // refence the youtube api. Also note that trailer is part of the search result
+    var trailerAPI = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=" + input + "+trailer&key=AIzaSyCPwPkuOKdEBvPA0HbuhvkFs-xIAyb94Uc";
 
+    fetch(trailerAPI)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+
+        // takes the first result and then update the iframe src with it
+        trailerId = data.items[0].id.videoId
+        trailerURL = 'https://www.youtube.com/embed/'+ trailerId + '?rel=0'
+        movTrailerEl.attr('src', trailerURL)
+    });
 };
+
+$( function() {
+    $( "#sortable" ).sortable();
+  } );
+  
+//   on clicking the favIcon it will generate a new li in the favorite list ul. Along with that it will create a unique id with the 'i' variable for saving locally
+  favIconEl.on('click', function() {
+    
+    //   creates the li element for the favorite list
+    var liElement = $('<li>').attr('id', 'list-' +iteration).addClass('ui-state-default border border-2 rounded hover-element').text(inputValue)
+    
+    localStorage.setItem('list-' +iteration, inputValue)
+
+    $('#sortable').append(liElement)
+
+    liElement.on('click', function() {
+    var textContent = $(this).text();
+    textContentWS = textContent.replace(/\s/g, "+");
+    movieApi(textContentWS);
+    moviePoster(textContentWS);
+    movieTrailer(textContentWS);
+    })
+    iteration++
+    } )
+
+    // for loop that on page load iterates through the localStorage and then adds the list items to the favorites list. 
+for (var i = 0; i < localStorage.length;i++) {
+    movieName = localStorage.getItem('list-' + i)
+    var liElement = $('<li>').attr('id', 'list-' +i).addClass('ui-state-default border border-2 rounded hover-element').text(movieName)
+    $('#sortable').append(liElement)
+    liElement.on('click', function() {
+        var textContent = $(this).text();
+        textContentWS = textContent.replace(/\s/g, "+");
+        movieApi(textContentWS);
+        moviePoster(textContentWS);
+        movieTrailer(textContentWS);
+        })
+    
+}
