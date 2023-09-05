@@ -10,22 +10,20 @@ var moviePlot = $('.plot');
 var movieRating = $('.rating');
 var moviePic = $('.poster');
 var movTrailerEl = $('iframe');
- 
+var favIconEl = $('#favIcon') 
+var inputValue = ''
 
 // event listener that takes user input
 movieForm.on('submit', function(event) {
     event.preventDefault();
-    var inputValue = userInput.val();
+    inputValue = userInput.val();
 
     // using .replace(/\s/g, "+") to replace the white space from the user input with "+" before adding to apiUrl
-    var inputValue = inputValue.replace(/\s/g, "+");
+    var inputValueWS = inputValue.replace(/\s/g, "+");
 
-    var ytInput = inputValue.replace(/\s/g, "%20");
-
-    movieApi(inputValue);
-    moviePoster(inputValue);
-    movieTrailer(inputValue);
-    console.log(inputValue)
+    movieApi(inputValueWS);
+    moviePoster(inputValueWS);
+    movieTrailer(inputValueWS);
 });
 
 var movieApi = function(input) {
@@ -82,6 +80,7 @@ function moviePoster(input) {
         // display the movie poster in the img element
         moviePic.attr('src', posterURL);
         moviePic.removeClass('d-none')
+        favIconEl.removeClass('d-none')
     })
     .catch(function(error) {
         console.log(error);
@@ -111,3 +110,17 @@ function movieTrailer(input) {
 $( function() {
     $( "#sortable" ).sortable();
   } );
+
+  favIconEl.on('click', function() {
+    console.log(inputValue)
+    var liElement = $('<li>').addClass('ui-state-default border border-2 rounded hover-element').text(inputValue)
+    $('#sortable').append(liElement)
+} )
+
+//   $(document).ready(function() {
+//     favEl.click(function() {
+//         var liElement = $('<li>').addClass('ui-state-default border border-2 rounded hover-element').text(userInput.val)
+//         $('#sortable').append(liElement)
+        
+//     })
+//   })
