@@ -14,6 +14,17 @@ var watchIconEl = $('#watchIcon')
 var favIconEl = $('.fa-regular'); 
 var inputValue = ''
 var iteration = 0
+var LS = {
+    list: []
+}
+
+
+if (!localStorage.getItem('iteration')){
+    iteration = 0
+} else {
+    iteration = localStorage.getItem('iteration')
+}
+    
 
 // event listener that takes user input
 movieForm.on('submit', function(event) {
@@ -25,7 +36,7 @@ movieForm.on('submit', function(event) {
 
     movieApi(inputValueWS);
     moviePoster(inputValueWS);
-    movieTrailer(inputValueWS);
+    // movieTrailer(inputValueWS);
 });
 
 function validateForm() {
@@ -134,7 +145,28 @@ $( function() {
     //   creates the li element for the watch list
     var liElement = $('<li>').attr('id', 'list-' +iteration).addClass('ui-state-default border border-2 rounded hover-element').text(inputValue)
     
-    localStorage.setItem('list-' +iteration, inputValue)
+    //  fetches from local storage if the movie list exists
+    var fetchedList = {
+        list: []
+    }
+    if (!JSON.parse(localStorage.getItem('watchList')))
+    {
+        fetchedList = {
+            list: []
+        }
+    }
+    else {
+        fetchedList = JSON.parse(localStorage.getItem('watchList'))
+    }
+
+    //  creating new object with key/value equal to the list iterator and movie name to set to local storage
+    var objKey = 'list-' + iteration
+    var newObj = {}
+    newObj[objKey] = inputValue
+    
+    //  pushes the new movie object into the array within fetchedList
+    fetchedList.list.push(newObj)
+    localStorage.setItem('watchList', JSON.stringify(fetchedList))
 
     $('#sortable').append(liElement)
 
@@ -143,25 +175,64 @@ $( function() {
     textContentWS = textContent.replace(/\s/g, "+");
     movieApi(textContentWS);
     moviePoster(textContentWS);
-    movieTrailer(textContentWS);
+    // movieTrailer(textContentWS);
+    
     })
     iteration++
-    } )
+    localStorage.setItem('iteration', iteration)
+} )
 
-    // for loop that on page load iterates through the localStorage and then adds the list items to the watch list. 
-for (var i = 0; i < localStorage.length;i++) {
-    movieName = localStorage.getItem('list-' + i)
-    var liElement = $('<li>').attr('id', 'list-' +i).addClass('ui-state-default border border-2 rounded hover-element').text(movieName)
+//  fetching saved fav movies when page loads
+var fetchedList = {
+    list: []
+}
+if (!JSON.parse(localStorage.getItem('watchList')))
+{
+    fetchedList = {
+        list: []
+    }
+}
+else {
+    fetchedList = JSON.parse(localStorage.getItem('watchList'))
+}
+
+    // for loop that on page load iterates through the localStorage and then adds the list items to the favorites list. 
+for (var i = 0; i < fetchedList.list.length ;i++) {
+    var listObj = fetchedList.list[i]
+    key = Object.keys(listObj)[0]
+
+    movieName = fetchedList.list[i][key]
+    var liElement = $('<li>').attr('id', key).addClass('ui-state-default border border-2 rounded hover-element me-1 m-1 d-inline-block w-75').text(movieName)
+    var removeButton = $('<button>').attr('id', 'btn-item-' +i).addClass('remove-btn').text('X')
+
+    // append the remove button to the liEliment
+    // liElement.append(removeButton)
+
     $('#sortable').append(liElement)
+    $('#sortable').append(removeButton)
     liElement.on('click', function() {
         var textContent = $(this).text();
         textContentWS = textContent.replace(/\s/g, "+");
         movieApi(textContentWS);
         moviePoster(textContentWS);
-        movieTrailer(textContentWS);
+        // movieTrailer(textContentWS);
         })
-    
+
 }
+
+$('#sortable').on('click', '.remove-btn', function() {
+    var listItem = $(this).prev(); // Select the previous sibling (li element)
+    var buttonId = $(this).attr('id');
+    var index = buttonId.split('-')[2];
+    fetchedList.list.splice(index, 1)
+    
+    listItem.remove();
+    $(this).remove(); // Remove the clicked remove button
+    localStorage.setItem('watchList', JSON.stringify(fetchedList));
+  });
+
+
+
 
 $( function() {
     $( "#favSortable" ).sortable();
