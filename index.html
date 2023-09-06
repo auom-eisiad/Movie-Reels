@@ -33,24 +33,31 @@
       <h1 class="text-center">Movie Reels</h1>
 
       <!-- <input type="button" value=""> -->
-      <form id="movie-form">
+      <form id="movie-form" action="/action_page.php" onsubmit="return validateForm()" method="post" required>
         <input type="text" id="movie-name" placeholder="Search for movie">
         <button type="submit" id="search"><i class="fas fa-search"></i></button>
       </form>
     </header>
 
-    <!-- favorite movie list -->
+    
     <div class="row">
+      <!-- Movies list -->
       <div class="col-3 d-flex flex-column border border-1">
+        <!-- Favorites -->
+        <h2 class="text-center">Favorites</h2>
+        <p class="text-center">Sort your Favorites!</p>
+        <ul id="favSortable" class="favs container text-center align-self-center">
+        </ul>
+        <br>
+        <!-- Watch list -->
         <h2 class="text-center">Watch list</h2>
         <p class="text-center">Sort your watch list!</p>
-        <ul id="sortable" class="fav-list container text-center align-self-center">
-          <!-- <li id="list-0" class="ui-state-default border border-2 rounded hover-element me-1 m-1 ui-sortable-handle d-inline-block w-75">demo name</li>
-          <button class="remove-btn ui-sortable-handle">X</button>
-          <li id="list-1" class="ui-state-default border border-2 rounded hover-element me-1 m-1 ui-sortable-handle d-inline-block w-75">the thing</li>
-          <button class="remove-btn ui-sortable-handle">X</button> -->
+        <ul id="sortable" class="watch-list container text-center align-self-center">
         </ul>
+      
       </div>
+
+    
 
       <main class="col-9 text-center border">
         
@@ -61,8 +68,11 @@
         <!-- added class='d-none'. This will hide the element till removed.  -->
         <img class="poster d-none" src="" alt="movie poster"/>
 
-        <!-- adding a favorite icon -->
-        <img id="favIcon" class="w-50px h-50px d-none" src="assets/images/star icon.png" alt="favorites button icon">
+        <!-- adding a watch list icon -->
+        <img id="watchIcon" title = "Add to Watch List" class="w-50px h-50px d-none" src="assets/images/star icon.png" alt="watch list button icon">
+
+        <!-- adding Favorite 'HEART' icon -->
+        <i class="fa-regular fa-heart fa-xl d-none" title = "Add to Favorites" style="color: #cc0000;" alt="favorite list heart icon"></i>
         
         <!-- movie plot -->
         <div class="plot">
@@ -79,6 +89,9 @@
         title="YouTube video player" frameborder="1" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
       </main>
+
+
+      
     </div>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
@@ -87,6 +100,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <!-- added fontawesome script link -->
+    <script src="https://kit.fontawesome.com/e1d81dddcf.js" crossorigin="anonymous"></script>
     <script src="./script.js"></script>
     </body>
 

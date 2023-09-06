@@ -10,7 +10,8 @@ var moviePlot = $('.plot');
 var movieRating = $('.rating');
 var moviePic = $('.poster');
 var movTrailerEl = $('iframe');
-var favIconEl = $('#favIcon') 
+var watchIconEl = $('#watchIcon')
+var favIconEl = $('.fa-regular'); 
 var inputValue = ''
 var iteration = 0
 var LS = {
@@ -38,6 +39,14 @@ movieForm.on('submit', function(event) {
     // movieTrailer(inputValueWS);
 });
 
+function validateForm() {
+    var x = document.forms["movie-form"]["movie-name"].value;
+    if (x == "" || x == null) {
+      alert("Please type in a movie name :)");
+      return false;
+    }
+  }
+
 var movieApi = function(input) {
     var apiUrl = 'http://www.omdbapi.com/?t=' + input + '&plot=full&apikey=1df82d2f';
 
@@ -47,26 +56,32 @@ var movieApi = function(input) {
             return response.json();
         })
         .then(function (data) {
-            // console.log(data)
-        
-            // updates the display title
-            movieTitle.text(data.Title);
+             console.log(data)
 
-            // updates the movie plot element
-            moviePlot.text(data.Plot);
+            //if user inputs gibberish or text that doesn't match anything in omdbapi.com it displays the message 'Movie not found!'
+            if(data.Error === 'Movie not found!') {
+                alert(data.Error);
+            }
+            else {
+                // updates the display title
+                movieTitle.text(data.Title);
 
-            // updates the critic review scores by going through the ratings object.     
-            const ratings = data.Ratings;
-                let ratingsHTML = '';
-                ratings.forEach(rating => {
-                const source = rating.Source;
-                const value = rating.Value;
-                const ratingHTML = `<p>${source}</p><p>Rating: ${value}</p>`;
-                ratingsHTML += ratingHTML;
-            });
+                // updates the movie plot element
+                moviePlot.text(data.Plot);
 
-            // Display the ratings HTML in an element with the id rating
-            document.getElementById('rating').innerHTML = ratingsHTML;   
+                // updates the critic review scores by going through the ratings object.     
+                const ratings = data.Ratings;
+                    let ratingsHTML = '';
+                    ratings.forEach(rating => {
+                    const source = rating.Source;
+                    const value = rating.Value;
+                    const ratingHTML = `<p>${source}</p><p>Rating: ${value}</p>`;
+                    ratingsHTML += ratingHTML;
+                });
+
+                // Display the ratings HTML in an element with the id rating
+                document.getElementById('rating').innerHTML = ratingsHTML;
+            }
         });
 };
 
@@ -92,6 +107,7 @@ function moviePoster(input) {
         // display the movie poster in the img element
         moviePic.attr('src', posterURL);
         moviePic.removeClass('d-none')
+        watchIconEl.removeClass('d-none')
         favIconEl.removeClass('d-none')
     })
     .catch(function(error) {
@@ -123,10 +139,10 @@ $( function() {
     $( "#sortable" ).sortable();
   } );
   
-//   on clicking the favIcon it will generate a new li in the favorite list ul. Along with that it will create a unique id with the 'i' variable for saving locally
-  favIconEl.on('click', function() {
-
-    //   creates the li element for the favorite list
+//   on clicking the watchIcon it will generate a new li in the watch list ul. Along with that it will create a unique id with the 'i' variable for saving locally
+  watchIconEl.on('click', function() {
+    
+    //   creates the li element for the watch list
     var liElement = $('<li>').attr('id', 'list-' +iteration).addClass('ui-state-default border border-2 rounded hover-element').text(inputValue)
     
     //  fetches from local storage if the movie list exists
@@ -216,3 +232,56 @@ $('#sortable').on('click', '.remove-btn', function() {
   });
 
 
+
+
+$( function() {
+    $( "#favSortable" ).sortable();
+});
+  
+//   on clicking the favIcon it will generate a new li in the fav list ul. Along with that it will create a unique id with the 'i' variable for saving locally
+favIconEl.on('click', function() {
+
+    // removes outline of heart button and replaces with solid  heart on
+    $('i.fa-heart').removeClass('fa-regular');
+    $('i.fa-heart').addClass('fa-solid');
+
+    //   creates the li element for the fav list
+    var liElement = $('<li>').attr('id', 'fav-' +iteration).addClass('ui-state-default border border-2 rounded hover-element').text(inputValue)
+
+    localStorage.setItem('fav-' +iteration, inputValue)
+
+    $('#favSortable').append(liElement)
+
+    liElement.on('click', function() {
+    var textContent = $(this).text();
+    textContentWS = textContent.replace(/\s/g, "+");
+    movieApi(textContentWS);
+    moviePoster(textContentWS);
+    movieTrailer(textContentWS);
+    })
+    iteration++ 
+    // console.log(iteration);
+    // localStorage.setItem('iteration', iteration)
+
+} )
+
+// for loop that on page load iterates through the localStorage and then adds the fav items to the fav list. 
+for (var i = 0; i < localStorage.length; i++) {
+    
+    if(localStorage.key(i).startsWith('fav')) {
+        movieName = localStorage.getItem(localStorage.key(i));
+       
+        if (movieName) {
+            var liElement = $('<li>').attr('id', 'fav-' +i).addClass('ui-state-default border border-2 rounded hover-element').text(movieName)
+            $('#favSortable').append(liElement);
+
+            liElement.on('click', function() {
+                var textContent = $(this).text();
+                textContentWS = textContent.replace(/\s/g, "+");
+                movieApi(textContentWS);
+                moviePoster(textContentWS);
+                movieTrailer(textContentWS);
+            })
+        }; 
+    }
+}
