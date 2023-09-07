@@ -53,6 +53,10 @@ function validateForm() {
   }
 
 var movieApi = function(input) {
+    // remove the "is-sr-only" tag
+    var displayPoster = document.querySelector(".poster");
+    displayPoster.classList.remove("is-sr-only");
+
     var apiUrl = 'http://www.omdbapi.com/?t=' + input + '&plot=full&apikey=1df82d2f';
 
     // fetching the apiUrl and then getting the data. 
@@ -122,23 +126,23 @@ function moviePoster(input) {
 };
 
 // youtube function for movie trailer
-function movieTrailer(input) {
+// function movieTrailer(input) {
 
-    // refence the youtube api. Also note that trailer is part of the search result
-    var trailerAPI = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=" + input + "+trailer&key=AIzaSyCPwPkuOKdEBvPA0HbuhvkFs-xIAyb94Uc";
+//     // refence the youtube api. Also note that trailer is part of the search result
+//     var trailerAPI = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=" + input + "+trailer&key=AIzaSyCPwPkuOKdEBvPA0HbuhvkFs-xIAyb94Uc";
 
-    fetch(trailerAPI)
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(data) {
+//     fetch(trailerAPI)
+//     .then(function(response) {
+//         return response.json();
+//     })
+//     .then(function(data) {
 
-        // takes the first result and then update the iframe src with it
-        trailerId = data.items[0].id.videoId
-        trailerURL = 'https://www.youtube.com/embed/'+ trailerId + '?rel=0'
-        movTrailerEl.attr('src', trailerURL)
-    });
-};
+//         // takes the first result and then update the iframe src with it
+//         trailerId = data.items[0].id.videoId
+//         trailerURL = 'https://www.youtube.com/embed/'+ trailerId + '?rel=0'
+//         movTrailerEl.attr('src', trailerURL)
+//     });
+// };
 
 $( function() {
     $( "#sortable" ).sortable();
@@ -262,7 +266,7 @@ favIconEl.on('click', function() {
     textContentWS = textContent.replace(/\s/g, "+");
     movieApi(textContentWS);
     moviePoster(textContentWS);
-    movieTrailer(textContentWS);
+    // movieTrailer(textContentWS);
     })
     iteration++ 
     // console.log(iteration);
@@ -285,7 +289,7 @@ for (var i = 0; i < localStorage.length; i++) {
                 textContentWS = textContent.replace(/\s/g, "+");
                 movieApi(textContentWS);
                 moviePoster(textContentWS);
-                movieTrailer(textContentWS);
+                // movieTrailer(textContentWS);
             })
         }; 
     }
