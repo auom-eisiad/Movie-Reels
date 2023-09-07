@@ -95,12 +95,8 @@ h2 {
 }
 
 /* changes mouse to pointer when you hover over the favorites button */
-.fa-regular {
+#favIcon:hover {
     cursor:pointer;
-}
-
-.hover-element {
-    cursor: pointer;
 }
 
 footer {
