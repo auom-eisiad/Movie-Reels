@@ -11,7 +11,7 @@ var movieRating = $('.rating');
 var moviePic = $('.poster');
 var movTrailerEl = $('iframe');
 var watchIconEl = $('#watchIcon')
-var favIconEl = $('.fa-regular'); 
+var favIconEl = $('#favIcon'); 
 var inputValue = ''
 var watchIteration = 0
 var favIteration = 0
@@ -42,7 +42,7 @@ movieForm.on('submit', function(event) {
 
     movieApi(inputValueWS);
     moviePoster(inputValueWS);
-    movieTrailer(inputValueWS);
+    // movieTrailer(inputValueWS);
 });
 
 function validateForm() {
@@ -54,6 +54,10 @@ function validateForm() {
   }
 
 var movieApi = function(input) {
+    // remove the "is-sr-only" tag
+    var displayPoster = document.querySelector(".poster");
+    displayPoster.classList.remove("is-sr-only");
+
     var apiUrl = 'http://www.omdbapi.com/?t=' + input + '&plot=full&apikey=1df82d2f';
 
     // fetching the apiUrl and then getting the data. 
@@ -94,6 +98,20 @@ var movieApi = function(input) {
 
 // function for movie poster
 function moviePoster(input) {
+
+    // remove the "is-sr-only" tag
+    var movieTitle = document.querySelector("#title");
+    movieTitle.classList.remove("is-sr-only");
+
+    var displayPoster = document.querySelector(".poster");
+    displayPoster.classList.remove("is-sr-only");
+
+    var watchLaterIcon = document.querySelector(".watchLater");
+    watchLaterIcon.classList.remove("is-sr-only");
+
+    var favMovieIcon = document.querySelector(".love");
+    favMovieIcon.classList.remove("is-sr-only");
+
     // the api url for the poster 
     var posterAPI = "https://api.themoviedb.org/3/search/movie?query=" + input + "&api_key=b935e23b4ae8daff658903f94d9e2c61";
 
@@ -124,36 +142,37 @@ function moviePoster(input) {
 };
 
 // youtube function for movie trailer
-function movieTrailer(input) {
+// function movieTrailer(input) {
 
-// grabbing and saving the movie year of the movie to add to the search result for a more narrowed down result
-    movieAPI = 'http://www.omdbapi.com/?t=' + input + '&plot=full&apikey=1df82d2f';
+// // grabbing and saving the movie year of the movie to add to the search result for a more narrowed down result
+//     movieAPI = 'http://www.omdbapi.com/?t=' + input + '&plot=full&apikey=1df82d2f';
 
-    fetch(movieAPI)
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (data) {
-        var movieYear = data.Year
-        localStorage.setItem('movieYear', movieYear)
+//     fetch(movieAPI)
+//     .then(function (response) {
+//         return response.json();
+//     })
+//     .then(function (data) {
+//         var movieYear = data.Year
+//         localStorage.setItem('movieYear', movieYear)
 
-        // refence the youtube api. Also note that trailer and movieYear is part of the search result
-        var trailerAPI = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=" + input + "+" + movieYear +"+trailer&key=AIzaSyCPwPkuOKdEBvPA0HbuhvkFs-xIAyb94Uc";
-        return fetch(trailerAPI);
-    })
+//         // refence the youtube api. Also note that trailer and movieYear is part of the search result
+//         var trailerAPI = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=" + input + "+" + movieYear +"+trailer&key=AIzaSyCPwPkuOKdEBvPA0HbuhvkFs-xIAyb94Uc";
+//         return fetch(trailerAPI);
+//     })
     
-    // fetch(trailerAPI)
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(data) {
+//     // fetch(trailerAPI)
+//     .then(function(response) {
+//         return response.json();
+//     })
+//     .then(function(data) {
 
-        // takes the first result and then update the iframe src with it
-        trailerId = data.items[0].id.videoId
-        // trailerURL = 'https://www.youtube.com/embed/'+ trailerId + '?rel=0'
-        // movTrailerEl.attr('src', trailerURL)
-    });
-};
+//         // takes the first result and then update the iframe src with it
+//         trailerId = data.items[0].id.videoId
+//         // trailerURL = 'https://www.youtube.com/embed/'+ trailerId + '?rel=0'
+//         // movTrailerEl.attr('src', trailerURL)
+//     });
+// };
+
 
 $( function() {
     $( "#sortable" ).sortable();
