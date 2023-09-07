@@ -5,26 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" 
-    rel="stylesheet" 
-    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" 
-    crossorigin="anonymous"> -->
-
-    <!-- Roboto Custom Font for MUI -->
-    <!-- <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" 
-    rel="stylesheet" 
-    type="text/css"/> -->
-
     <!-- Bulma CSS Library -->
     <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
     rel="stylesheet"
     integrity="sha384-HmYpsz2Aa9Gh3JlkCoh8kUJ2mUKJKTnkyC2Lzt8aLzpPOpnDe8KpFE2xNiBpMDou" 
     crossorigin="anonymous"/>
-
-    <!-- MUI CSS Library -->
-    <!-- <link href="//cdn.muicss.com/mui-0.10.3/css/mui.min.css" 
-    rel="stylesheet" 
-     /> -->
 
     <!-- FontAwesome Icon Library/ Toolkit -->
     <link
@@ -46,11 +31,9 @@
   
   <body>
 
-    <!-- <header class="d-flex flex-row justify-content-around"> -->
     <header class="is-flex is-flex-direction-row is-justify-content-space-around">
       <h1 class="has-text-centered">Movie Reels</h1>
 
-      <!-- <input type="button" value=""> -->
       <form id="movie-form" action="/action_page.php" onsubmit="return validateForm()" method="post" required>
         <input type="text" id="movie-name" placeholder="Search for movie">
         <button type="submit" id="search"><i class="fas fa-search"></i></button>
@@ -58,15 +41,18 @@
     </header>
 
     <div class="columns is-gapless is-multiline">
+
       <!-- Movies list -->
-      <!-- <div class="col-3 d-flex flex-column border border-1"> -->
       <div class="column is-one-quarter is-flex is-flex-direction-column">
+
         <!-- Favorites -->
         <h2 class="has-text-centered">Favorites</h2>
         <p class="has-text-centered">Sort your Favorites!</p>
         <ul id="favSortable" class="favs container has-text-centered is-align-self-center">
         </ul>
+
         <br>
+
         <!-- Watch list -->
         <h2 class="has-text-centered">Watch list</h2>
         <p class="has-text-centered">Sort your watch list!</p>
@@ -74,8 +60,6 @@
         </ul>
       
       </div>
-
-    
 
       <main class="column is-three-quarters has-text-centered">
         
@@ -109,15 +93,14 @@
       </main>
     </div>
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" 
-      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" 
-      crossorigin="anonymous"></script> -->
+    <!-- All script files used -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <!-- added fontawesome script link -->
     <script src="https://kit.fontawesome.com/e1d81dddcf.js" crossorigin="anonymous"></script>
     <!-- <script src="//cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script> -->
     <script src="./script.js"></script>
+
     </body>
 
   <footer></footer>
