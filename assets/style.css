@@ -1,5 +1,6 @@
 :root {
     --fontfam: 'DM Sans', sans-serif;
+    --ftsize: 18px;
     --pri: #b40404;
     --sec: #fcc200;
     --thr: #daa520; 
@@ -24,13 +25,53 @@ ul {
 
 body {
     font-family: var(--fontfam);
-    font-size: 18px;
+    font-size: var(--ftsize);
+    color: var(--w);
+    background-color: var(--bg);
+}
+
+header {
+    background-color: var(--bg3);
+    height: 8rem;
 }
 
 .logo {
-    max-width: 18rem;
-    max-height: 18rem;
+    max-width: 22rem;
+    max-height: 22rem;
+    margin-left: 2rem;
+    margin-right: 12rem;
 }
+
+input {
+    background-color: var(--grey);
+    justify-content: center;
+    line-height: 2rem;
+    font-family: var(--fontfam);
+    font-size: var(--ftsize);
+}
+
+button {
+    background-color: var(--b);
+    padding: 0.6rem 1rem;
+}
+
+button:hover {
+    background-color: var(--pri);
+    cursor: pointer;
+}
+
+::placeholder {
+    padding-left: 0.5rem;
+    text-align: left;
+    justify-content: center;
+    color: var(--w)
+}
+
+input:focus::placeholder {
+    color: transparent;
+}
+
+
 
 #favSortable {list-style-type: none; margin: 0; padding: 0; width: 60%; }
 
@@ -48,7 +89,6 @@ body {
 .fa-regular {
     cursor:pointer;
 }
-
 
 .hover-element {
     cursor: pointer;
