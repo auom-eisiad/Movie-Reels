@@ -78,8 +78,22 @@ input:focus::placeholder {
     border-right: 3px solid var(--bg4);
 }
 
+#title {
+    font-family: var(--fontfam);
+    font-size: 3rem;
+}
+
 h2 {
     margin-top: 0.5rem;
+}
+
+.poster {
+    max-width: 25%;
+    max-height: 25%;
+    margin-left: 1rem;
+    display: flex;
+    position: relative;
+    text-align: left;
 }
 
 #favSortable {list-style-type: none; margin: 0; padding: 0; width: 60%; }
@@ -88,15 +102,29 @@ h2 {
 /* #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
 #sortable li span { position: absolute; margin-left: -1.3em; } */
 
-#watchIcon {
-    max-width: 25px;
-    max-height: 25px;
+.icons {
+    position: absolute;
+    z-index: 2;
+    margin-left: 2rem;
+    margin-top: 1rem;
+}
+
+#watchIcon:hover {
     cursor:pointer;
+}
+
+#favIcon {
+    padding-left: 0.2rem;
 }
 
 /* changes mouse to pointer when you hover over the favorites button */
 #favIcon:hover {
     cursor:pointer;
+}
+
+.plot {
+    display: flex;
+    flex-direction: row;
 }
 
 footer {

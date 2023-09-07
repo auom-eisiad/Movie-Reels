@@ -69,24 +69,30 @@
       <main class="column is-10 has-text-centered">
         
         <!-- movie title -->
-        <h2 id="title">Display</h2>
+        <h2 id="title" class="is-sr-only">Movie Title Here</h2>
 
-        <!-- movie poster -->
-        <!-- added class='d-none'. This will hide the element till removed.  -->
-        <img class="poster is-sr-only" src="" alt="movie poster"/>
+        <div class="columns is-gapless is-multiline">
 
-        <!-- adding a watch list icon -->
-        <img id="watchIcon" title = "Add to Watch List" class="watchLater is-sr-only" src="assets/images/star icon.png" alt="watch list button icon">
+          <!-- movie poster -->
+          <!-- added class='d-none'. This will hide the element till removed.  -->
+          <img class="poster is-sr-only" src="" alt="movie poster"/>
 
-        <!-- adding Favorite 'HEART' icon -->
-        <i id="favIcon" class="love fa-regular fa-heart fa-xl is-sr-only" title = "Add to Favorites" style="color: #cc0000;" alt="favorite list heart icon"></i>
-        
-        <!-- movie plot -->
-        <div class="plot">
-        </div>
+            <div class="icons">
+            <!-- adding a watch list icon -->
+            <i id="watchIcon" class="watchLater fa-regular fa-star fa-xl is-sr-only" title = "Add to Watch List" style="color: #fcc200;" alt="watch list button icon"></i>
 
-        <!-- movie rating -->
-        <div id="rating">
+            <!-- adding Favorite 'HEART' icon -->
+            <i id="favIcon" class="love fa-regular fa-heart fa-xl is-sr-only" title = "Add to Favorites" style="color: #cc0000;" alt="favorite list heart icon"></i>
+            </div>
+
+          <!-- movie plot -->
+          <div class="plot column is-7 has-text-centered">
+          </div>
+
+          <!-- movie rating -->
+          <div id="rating" class="column is-3">
+          </div>
+
         </div>
 
         <!-- movie trailer -->
@@ -94,6 +100,7 @@
         <!-- the below iframe code is supplied by youtube when going to share and then selecting embed. Adjusted it so it doesn't show suggested videos on pause or at the end -->
         <iframe width="560" height="315" src="" 
         title="YouTube video player" frameborder="1" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
 
       </main>
     </div>

@@ -100,6 +100,9 @@ var movieApi = function(input) {
 function moviePoster(input) {
 
     // remove the "is-sr-only" tag
+    var movieTitle = document.querySelector("#title");
+    movieTitle.classList.remove("is-sr-only");
+
     var displayPoster = document.querySelector(".poster");
     displayPoster.classList.remove("is-sr-only");
 
