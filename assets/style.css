@@ -1,8 +1,17 @@
 :root {
-    --fontfam: ;
-    --c1: ;
+    --fontfam: 'DM Sans', sans-serif;
+    --pri: #b40404;
+    --sec: #fcc200;
+    --thr: #daa520; 
+    --for: #8b0000;
     --w: #fff;
+    --offw: rgba(255, 255, 255, 0.7);
+    --grey: rgba(255, 255, 255, 0.5);
     --b: #000;
+    --bg: #121212;
+    --bg2: rgba(255, 255, 255, 0.08);
+    --bg3: rgba(255, 255, 255, 0.12);
+    --bg4: rgba(255, 255, 255, 0.3);
 }
 
 * {
@@ -11,6 +20,16 @@
 
 ul {
     list-style-type: none;
+}
+
+body {
+    font-family: var(--fontfam);
+    font-size: 18px;
+}
+
+.logo {
+    max-width: 18rem;
+    max-height: 18rem;
 }
 
 #favSortable {list-style-type: none; margin: 0; padding: 0; width: 60%; }

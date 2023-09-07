@@ -24,6 +24,11 @@
     <!-- added a shortcut icon as our website logo -->
     <link rel="shortcut icon" type="icon" href="./assets/images/movie-icon.jpg"/>
 
+    <!-- Google Fonts used -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="./assets/style.css"/>
 
     <title>Movie Reels</title>
@@ -32,9 +37,9 @@
   <body>
 
     <header class="is-flex is-flex-direction-row is-justify-content-space-around">
-      <h1 class="has-text-centered">Movie Reels</h1>
+      <h1 class="logo has-text-centered"><img src="./assets/images/moviereellogo.png"/></h1>
 
-      <form id="movie-form" action="/action_page.php" onsubmit="return validateForm()" method="post" required>
+      <form id="movie-form" class="is-align-self-center" action="/action_page.php" onsubmit="return validateForm()" method="post" required>
         <input type="text" id="movie-name" placeholder="Search for movie">
         <button type="submit" id="search"><i class="fas fa-search"></i></button>
       </form>
