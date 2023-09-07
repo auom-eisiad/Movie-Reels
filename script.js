@@ -128,7 +128,7 @@ function moviePoster(input) {
 };
 
 // youtube function for movie trailer
-// function movieTrailer(input) {
+function movieTrailer(input) {
 
 // grabbing and saving the movie year of the movie to add to the search result for a more narrowed down result
     movieAPI = 'http://www.omdbapi.com/?t=' + input + '&plot=full&apikey=1df82d2f';
@@ -158,6 +158,7 @@ function moviePoster(input) {
         // movTrailerEl.attr('src', trailerURL)
     });
 };
+
 
 $( function() {
     $( "#sortable" ).sortable();
