@@ -2,11 +2,14 @@
 
 ## Description
 
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
+Movie-Reels is an application that allows users to search for movie titles and find info about them. (ie. Movie Poster, Plot, Reviews from Critics, Trailer)
+Then users can add that title to a watchlsit to reference later.
 
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
+- Motivation: At present there are so many options to watch.  Just sitting down to view something for leisure can be a trudge.
+     Having a "grocery list" can help save time previously wasted searching so people can get back to watching what they want instead of wasting
+      free time. 
+- Why did you build this project? All members of our group are passionate about movies and television and very much try to maximzie our time spent viewing as well as talking and sharing about them.
+- What problem does it solve? It is both a time saver and a convenient place to store movie titles for oneself.
 - What did you learn?
 
 ## Table of Contents (Optional)
@@ -56,7 +59,13 @@ Badges aren't necessary, per se, but they demonstrate street cred. Badges let ot
 
 ## Features
 
-If your project has a lot of features, list them here.
+    1.) Search bar function to search for Movies/Films
+    2.) Watch later list and a Favorites list
+    3.) Add to Watchlist and add to Favorites buttons
+    4.) APIs that pull and display Movie data including: 
+        -Movie Poster
+        -Plot/Summary
+        -Crtic Ratings from IMDb, Rotten Tomatoes, and MetaCritic
 
 ## How to Contribute
 
