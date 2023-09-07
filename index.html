@@ -5,13 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" 
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" 
     rel="stylesheet" 
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" 
-    crossorigin="anonymous">
+    crossorigin="anonymous"> -->
 
-    <link rel="stylesheet" type="text/css" href="./assets/style.css"/>
+    <!-- Roboto Custom Font for MUI -->
+    <!-- <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" 
+    rel="stylesheet" 
+    type="text/css"/> -->
 
+    <!-- Bulma CSS Library -->
+    <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    rel="stylesheet"
+    integrity="sha384-HmYpsz2Aa9Gh3JlkCoh8kUJ2mUKJKTnkyC2Lzt8aLzpPOpnDe8KpFE2xNiBpMDou" 
+    crossorigin="anonymous"/>
+
+    <!-- MUI CSS Library -->
+    <!-- <link href="//cdn.muicss.com/mui-0.10.3/css/mui.min.css" 
+    rel="stylesheet" 
+     /> -->
+
+    <!-- FontAwesome Icon Library/ Toolkit -->
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
@@ -20,17 +35,20 @@
     />
 
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"/>
-    
-    <link rel="shortcut icon" type="icon" href="./assets/images/movie-icon.jpg"/>
+
     <!-- added a shortcut icon as our website logo -->
-    
+    <link rel="shortcut icon" type="icon" href="./assets/images/movie-icon.jpg"/>
+
+    <link rel="stylesheet" type="text/css" href="./assets/style.css"/>
+
     <title>Movie Reels</title>
   </head>
   
   <body>
 
-    <header class="d-flex flex-row justify-content-around">
-      <h1 class="text-center">Movie Reels</h1>
+    <!-- <header class="d-flex flex-row justify-content-around"> -->
+    <header class="is-flex is-flex-direction-row is-justify-content-space-around">
+      <h1 class="has-text-centered">Movie Reels</h1>
 
       <!-- <input type="button" value=""> -->
       <form id="movie-form" action="/action_page.php" onsubmit="return validateForm()" method="post" required>
@@ -39,40 +57,40 @@
       </form>
     </header>
 
-    
-    <div class="row">
+    <div class="columns is-gapless is-multiline">
       <!-- Movies list -->
-      <div class="col-3 d-flex flex-column border border-1">
+      <!-- <div class="col-3 d-flex flex-column border border-1"> -->
+      <div class="column is-one-quarter is-flex is-flex-direction-column">
         <!-- Favorites -->
-        <h2 class="text-center">Favorites</h2>
-        <p class="text-center">Sort your Favorites!</p>
-        <ul id="favSortable" class="favs container text-center align-self-center">
+        <h2 class="has-text-centered">Favorites</h2>
+        <p class="has-text-centered">Sort your Favorites!</p>
+        <ul id="favSortable" class="favs container has-text-centered is-align-self-center">
         </ul>
         <br>
         <!-- Watch list -->
-        <h2 class="text-center">Watch list</h2>
-        <p class="text-center">Sort your watch list!</p>
-        <ul id="sortable" class="watch-list container text-center align-self-center">
+        <h2 class="has-text-centered">Watch list</h2>
+        <p class="has-text-centered">Sort your watch list!</p>
+        <ul id="sortable" class="watch-list container has-text-centered is-align-self-center">
         </ul>
       
       </div>
 
     
 
-      <main class="col-9 text-center border">
+      <main class="column is-three-quarters has-text-centered">
         
         <!-- movie title -->
         <h2 id="title">Display</h2>
 
         <!-- movie poster -->
         <!-- added class='d-none'. This will hide the element till removed.  -->
-        <img class="poster d-none" src="" alt="movie poster"/>
+        <img class="poster is-sr-only" src="" alt="movie poster"/>
 
         <!-- adding a watch list icon -->
-        <img id="watchIcon" title = "Add to Watch List" class="w-50px h-50px d-none" src="assets/images/star icon.png" alt="watch list button icon">
+        <img id="watchIcon" title = "Add to Watch List" class="is-sr-only" src="assets/images/star icon.png" alt="watch list button icon">
 
         <!-- adding Favorite 'HEART' icon -->
-        <i class="fa-regular fa-heart fa-xl d-none" title = "Add to Favorites" style="color: #cc0000;" alt="favorite list heart icon"></i>
+        <i class="fa-regular fa-heart fa-xl is-sr-only" title = "Add to Favorites" style="color: #cc0000;" alt="favorite list heart icon"></i>
         
         <!-- movie plot -->
         <div class="plot">
@@ -89,19 +107,16 @@
         title="YouTube video player" frameborder="1" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
       </main>
-
-
-      
     </div>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
-    integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
-    crossorigin="anonymous"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" 
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" 
+      crossorigin="anonymous"></script> -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <!-- added fontawesome script link -->
     <script src="https://kit.fontawesome.com/e1d81dddcf.js" crossorigin="anonymous"></script>
+    <!-- <script src="//cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script> -->
     <script src="./script.js"></script>
     </body>
 
