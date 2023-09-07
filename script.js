@@ -37,6 +37,11 @@ movieForm.on('submit', function(event) {
     movieApi(inputValueWS);
     moviePoster(inputValueWS);
     // movieTrailer(inputValueWS);
+
+    // for testing without using api limit
+    // movieApi(textContentWS);
+    // moviePoster(textContentWS);
+    // // movieTrailer(textContentWS);
 });
 
 function validateForm() {

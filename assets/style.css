@@ -6,13 +6,13 @@
     --thr: #daa520; 
     --for: #8b0000;
     --w: #fff;
-    --offw: rgba(255, 255, 255, 0.7);
-    --grey: rgba(255, 255, 255, 0.5);
+    --offw: #b8b8b8;
+    --grey: #898989;
     --b: #000;
     --bg: #121212;
-    --bg2: rgba(255, 255, 255, 0.08);
-    --bg3: rgba(255, 255, 255, 0.12);
-    --bg4: rgba(255, 255, 255, 0.3);
+    --bg2: #252525;
+    --bg3: #2b2b2b;
+    --bg4: #5a5a5a;
 }
 
 * {
@@ -31,13 +31,15 @@ body {
 }
 
 header {
-    background-color: var(--bg3);
-    height: 8rem;
+    background-color: var(--bg2);
+    border-bottom: 2px solid var(--bg4);
+    height: 10rem;
 }
 
 .logo {
     max-width: 22rem;
     max-height: 22rem;
+    margin-top: 1rem;
     margin-left: 2rem;
     margin-right: 12rem;
 }
@@ -71,7 +73,14 @@ input:focus::placeholder {
     color: transparent;
 }
 
+#movie-list {
+    background-color: var(--bg2);
+    border-right: 3px solid var(--bg4);
+}
 
+h2 {
+    margin-top: 0.5rem;
+}
 
 #favSortable {list-style-type: none; margin: 0; padding: 0; width: 60%; }
 
@@ -92,4 +101,8 @@ input:focus::placeholder {
 
 .hover-element {
     cursor: pointer;
+}
+
+footer {
+    background-color: var(--bg2);
 }
