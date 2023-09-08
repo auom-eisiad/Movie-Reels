@@ -31,12 +31,14 @@ body {
     font-size: var(--ftsize);
     color: var(--w);
     background-color: var(--bg);
+    overflow: hidden;
 }
 
 header {
     background-color: var(--bg2);
     border-bottom: 2px solid var(--bg4);
     height: 10rem;
+    overflow: hidden;
 }
 
 .logo {
@@ -97,9 +99,17 @@ h2 {
     padding: 0;
 }
 
+.poster-container {
+    display: flex;
+    justify-content: center; /* Horizontally center the poster */
+    align-items: center; /* Vertically center the poster */
+}
+
 .poster {
     max-width: 100%;
     max-height: 100%;
+    margin-top: 1rem;
+    margin-left: 1rem;
     display: flex;
     position: relative;
     text-align: left;
@@ -121,7 +131,7 @@ h2 {
     position: absolute;
     z-index: 2;
     margin-left: 2rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
 }
 
 #watchIcon:hover {
