@@ -24,6 +24,9 @@ ul {
 }
 
 body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
     font-family: var(--fontfam);
     font-size: var(--ftsize);
     color: var(--w);
@@ -76,6 +79,7 @@ input:focus::placeholder {
 #movie-list {
     background-color: var(--bg2);
     border-right: 3px solid var(--bg4);
+    min-height: 100vh;
 }
 
 #title {
@@ -87,20 +91,31 @@ h2 {
     margin-top: 0.5rem;
 }
 
+#postMovie {
+    float: left; /* Float the postMovie div to the left */
+    margin-right: 10px; /* Add some right margin to create space between postMovie and box */
+    padding: 0;
+}
+
 .poster {
-    max-width: 25%;
-    max-height: 25%;
-    margin-left: 1rem;
+    max-width: 100%;
+    max-height: 100%;
     display: flex;
     position: relative;
     text-align: left;
 }
 
-#favSortable {list-style-type: none; margin: 0; padding: 0; width: 60%; }
+#favSortable {
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0; 
+    width: 60%; }
 
-#sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
-/* #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
-#sortable li span { position: absolute; margin-left: -1.3em; } */
+#sortable { 
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0; 
+    width: 60%; }
 
 .icons {
     position: absolute;
@@ -125,8 +140,20 @@ h2 {
 .plot {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+#rating {
+    margin-top: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 footer {
     background-color: var(--bg2);
+    min-height: 10vh;
 }

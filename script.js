@@ -42,7 +42,7 @@ movieForm.on('submit', function(event) {
 
     movieApi(inputValueWS);
     moviePoster(inputValueWS);
-    // movieTrailer(inputValueWS);
+    movieTrailer(inputValueWS);
 });
 
 function validateForm() {
@@ -85,7 +85,7 @@ var movieApi = function(input) {
                     ratings.forEach(rating => {
                     const source = rating.Source;
                     const value = rating.Value;
-                    const ratingHTML = `<p>${source}</p><p>Rating: ${value}</p>`;
+                    const ratingHTML = `<p>${source}: ${value}</p>`;
                     ratingsHTML += ratingHTML;
                 });
 
@@ -142,36 +142,36 @@ function moviePoster(input) {
 };
 
 // youtube function for movie trailer
-// function movieTrailer(input) {
+function movieTrailer(input) {
 
 // // grabbing and saving the movie year of the movie to add to the search result for a more narrowed down result
-//     movieAPI = 'http://www.omdbapi.com/?t=' + input + '&plot=full&apikey=1df82d2f';
+    movieAPI = 'http://www.omdbapi.com/?t=' + input + '&plot=full&apikey=1df82d2f';
 
-//     fetch(movieAPI)
-//     .then(function (response) {
-//         return response.json();
-//     })
-//     .then(function (data) {
-//         var movieYear = data.Year
-//         localStorage.setItem('movieYear', movieYear)
+    fetch(movieAPI)
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        var movieYear = data.Year
+        localStorage.setItem('movieYear', movieYear)
 
-//         // refence the youtube api. Also note that trailer and movieYear is part of the search result
-//         var trailerAPI = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=" + input + "+" + movieYear +"+trailer&key=AIzaSyCPwPkuOKdEBvPA0HbuhvkFs-xIAyb94Uc";
-//         return fetch(trailerAPI);
-//     })
+        // refence the youtube api. Also note that trailer and movieYear is part of the search result
+        var trailerAPI = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=" + input + "+" + movieYear +"+trailer&key=AIzaSyCPwPkuOKdEBvPA0HbuhvkFs-xIAyb94Uc";
+        return fetch(trailerAPI);
+    })
     
-//     // fetch(trailerAPI)
-//     .then(function(response) {
-//         return response.json();
-//     })
-//     .then(function(data) {
+    // fetch(trailerAPI)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
 
-//         // takes the first result and then update the iframe src with it
-//         trailerId = data.items[0].id.videoId
-//         // trailerURL = 'https://www.youtube.com/embed/'+ trailerId + '?rel=0'
-//         // movTrailerEl.attr('src', trailerURL)
-//     });
-// };
+        // takes the first result and then update the iframe src with it
+        trailerId = data.items[0].id.videoId
+        trailerURL = 'https://www.youtube.com/embed/'+ trailerId + '?rel=0'
+        movTrailerEl.attr('src', trailerURL)
+    });
+};
 
 
 $( function() {
