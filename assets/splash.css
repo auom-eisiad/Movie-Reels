@@ -1,0 +1,70 @@
+:root {
+    --fontfam: 'DM Sans', sans-serif;
+    --ftsize: 18px;
+    --pri: #b40404;
+    --sec: #fcc200;
+    --thr: #daa520; 
+    --for: #8b0000;
+    --w: #fff;
+    --offw: #b8b8b8;
+    --grey: #898989;
+    --b: #000;
+    --bg: #121212;
+    --bg2: #252525;
+    --bg3: #2b2b2b;
+    --bg4: #5a5a5a;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: var(--fontfam);
+    font-size: var(--ftsize);
+    color: var(--w);
+    background-color: var(--grey);
+}
+
+header {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg);
+}
+
+.logo {
+    max-width: 15rem;
+    max-height: 15rem;
+    margin-left: 2rem;
+    margin-right: 12rem;
+}
+
+.hero {
+    background-image: url(./images/moviesplash.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.4;
+    width: 100%;
+    min-height: 100vh;
+}
+
+#home {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--for);
+    color: white;
+    font-size: 2rem;
+    padding: 1rem 10rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#home:hover {
+    background-color: var(--pri);
+}
