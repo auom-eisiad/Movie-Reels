@@ -51,9 +51,19 @@ header {
     min-height: 100vh;
 }
 
+.quote {
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5rem;
+    font-family: var(--fontfam);
+    color: var(--b);
+}
+
 #home {
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: var(--for);
