@@ -19,6 +19,23 @@
     box-sizing: border-box;
 }
 
+/* SCROLLBAR STYLE */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px var(--bg3); 
+  }
+   
+  ::-webkit-scrollbar-thumb {
+    background: var(--pri); 
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--for); 
+  }
+
 body {
     margin: 0;
     padding: 0;

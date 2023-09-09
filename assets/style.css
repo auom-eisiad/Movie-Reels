@@ -1,5 +1,6 @@
 :root {
     --fontfam: 'DM Sans', sans-serif;
+    --fontfam2: 'Bebas Neue', sans-serif;
     --ftsize: 18px;
     --pri: #b40404;
     --sec: #fcc200;
@@ -19,22 +20,19 @@
     box-sizing: border-box;
 }
 
-/* width */
+/* SCROLLBAR STYLE */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px var(--bg3); 
 }
  
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: var(--pri); 
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: var(--for); 
 }
@@ -105,12 +103,12 @@ input:focus::placeholder {
 
 #movie-list {
     background-color: var(--bg2);
-    border-right: 3px solid var(--bg4);
+    border-right: 2px solid var(--bg4);
     min-height: 100vh;
 }
 
 #title {
-    font-family: var(--fontfam);
+    font-family: var(--fontfam2);
     font-size: 3rem;
 }
 
@@ -185,6 +183,8 @@ h2 {
 }
 
 #rating {
+    font-family: var(--fontfam2);
+    font-size: 25px;
     margin-top: 2rem;
     text-align: center;
     display: flex;
@@ -197,4 +197,9 @@ footer {
     background-color: var(--bg2);
     border-top: 2px solid var(--bg4);
     min-height: 10vh;
+}
+
+/* MEDIA QUERY */
+@media screen and (min-width: 760px) {
+
 }
