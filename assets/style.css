@@ -114,6 +114,8 @@ input:focus::placeholder {
 
 h2 {
     margin-top: 0.5rem;
+    font-family: var(--fontfam2);
+    font-size: 30px;
 }
 
 #postMovie {
@@ -197,9 +199,19 @@ footer {
     background-color: var(--bg2);
     border-top: 2px solid var(--bg4);
     min-height: 10vh;
+    padding-top: 2rem;
 }
 
 /* MEDIA QUERY */
-@media screen and (min-width: 760px) {
+@media screen and (max-width: 576px) {
+    .plot {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        text-align: center;
+    }
+}
 
+@media screen and (min-width: 576px) {
+    
 }
