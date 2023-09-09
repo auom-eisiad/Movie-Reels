@@ -78,6 +78,11 @@ input:focus::placeholder {
     color: transparent;
 }
 
+/* Remove the bottom margin from the columns class using !important */
+.columns.is-gapless:not(:last-child) {
+    margin-bottom: 0 !important;
+}
+
 #movie-list {
     background-color: var(--bg2);
     border-right: 3px solid var(--bg4);
@@ -153,6 +158,12 @@ h2 {
     text-align: center;
 }
 
+/* Override Bulma's width for .column.is-8 and .column.is-8-tablet */
+.column.is-8, .column.is-8-tablet {
+    width: auto !important;
+    flex: none !important;
+}
+
 #rating {
     margin-top: 2rem;
     text-align: center;
@@ -164,5 +175,6 @@ h2 {
 
 footer {
     background-color: var(--bg2);
+    border-top: 2px solid var(--bg4);
     min-height: 10vh;
 }
