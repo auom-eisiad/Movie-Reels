@@ -178,7 +178,7 @@ h2 {
     text-align: center;
 }
 
-/* Override Bulma's width for .column.is-8 and .column.is-8-tablet */
+/* Override Bulma's width for .column.is-8 and .column.is-8-tablet for index.html line 97*/
 .column.is-8, .column.is-8-tablet {
     width: auto !important;
     flex: none !important;

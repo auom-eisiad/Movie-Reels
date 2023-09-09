@@ -85,7 +85,8 @@ var movieApi = function(input) {
                     ratings.forEach(rating => {
                     const source = rating.Source;
                     const value = rating.Value;
-                    const ratingHTML = `<p>${source}: ${value}</p>`;
+                    const valueColor = "#fcc200";
+                    const ratingHTML = `<p>${source}: <span style="color: ${valueColor};">${value}</span></p>`;
                     ratingsHTML += ratingHTML;
                 });
 
