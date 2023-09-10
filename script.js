@@ -66,7 +66,7 @@ var movieApi = function(input) {
     var displayPoster = document.querySelector(".poster");
     displayPoster.classList.remove("is-sr-only");
 
-    var apiUrl = 'http://www.omdbapi.com/?t=' + input + '&plot=full&apikey=1df82d2f';
+    var apiUrl = 'https://www.omdbapi.com/?t=' + input + '&plot=full&apikey=1df82d2f';
 
     // fetching the apiUrl and then getting the data. 
     fetch(apiUrl)
@@ -166,7 +166,7 @@ function moviePoster(input) {
 function movieTrailer(input) {
 
 // grabbing and saving the movie year of the movie to add to the search result for a more narrowed down result
-    movieAPI = 'http://www.omdbapi.com/?t=' + input + '&plot=full&apikey=1df82d2f';
+    movieAPI = 'https://www.omdbapi.com/?t=' + input + '&plot=full&apikey=1df82d2f';
 
     fetch(movieAPI)
     .then(function (response) {
