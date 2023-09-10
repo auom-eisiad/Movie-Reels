@@ -143,6 +143,18 @@ function moviePoster(input) {
         moviePic.removeClass('d-none')
         watchIconEl.removeClass('d-none')
         favIconEl.removeClass('d-none')
+
+        // switches star button back to silohuette when a new search is clicked
+        $('i.fa-star').removeClass('fa-solid');
+        $('i.fa-star').addClass('fa-regular');
+
+        // switches heart button back to silohuette when a new search is clicked
+        $('i.fa-heart').removeClass('fa-solid');
+        $('i.fa-heart').addClass('fa-regular');
+
+
+
+
     })
     .catch(function(error) {
         console.log(error);
@@ -189,6 +201,10 @@ $( function() {
 
 // on clicking the watchIcon it will generate a new li in the watch list ul. Along with that it will create a unique id with the 'i' variable for saving locally
 watchIconEl.on('click', function() {
+
+    // removes outline of star button and replaces with solid one
+    $('i.fa-star').removeClass('fa-regular');
+    $('i.fa-star').addClass('fa-solid');
 
     if (fetchedList.list.length == 0) {
 
@@ -331,110 +347,110 @@ $( function() {
 });
 
 // WIP
-        // //   on clicking the favIcon it will generate a new li in the fav list ul. Along with that it will create a unique id with the 'i' variable for saving locally
-        // favIconEl.on('click', function() {
+        //   on clicking the favIcon it will generate a new li in the fav list ul. Along with that it will create a unique id with the 'i' variable for saving locally
+        favIconEl.on('click', function() {
 
-        //     // removes outline of heart button and replaces with solid  heart on
-        //     $('i.fa-heart').removeClass('fa-regular');
-        //     $('i.fa-heart').addClass('fa-solid');
+            // removes outline of heart button and replaces with solid  heart on
+            $('i.fa-heart').removeClass('fa-regular');
+            $('i.fa-heart').addClass('fa-solid');
+        
+            //   creates the li element for the fav list
+            var liElement = $('<li>').attr('id', 'fav-' +favIteration).addClass('ui-state-default border border-2 rounded hover-element').text(inputValue)
             
-        //     //   creates the li element for the fav list
-        //     var liElement = $('<li>').attr('id', 'fav-' +favIteration).addClass('ui-state-default border border-2 rounded hover-element').text(inputValue)
+            // fetches from local storage if the movie list exsits
             
-        //     // fetches from local storage if the movie list exsits
+            if (!JSON.parse(localStorage.getItem('favList')))
+            {
+                favList = {
+                    list: []
+                }
+            }
+            else {
+                favList = JSON.parse(localStorage.getItem('favList'))
+            }
+
+            //  creating new object with key/value equal to the list iterator and movie name to set to local storage
+            var objKey = 'list-' + favIteration
+            var newObj = {}
+            newObj[objKey] = inputValue
             
-        //     if (!JSON.parse(localStorage.getItem('favList')))
-        //     {
-        //         favList = {
-        //             list: []
-        //         }
-        //     }
-        //     else {
-        //         favList = JSON.parse(localStorage.getItem('favList'))
-        //     }
-
-        //     //  creating new object with key/value equal to the list iterator and movie name to set to local storage
-        //     var objKey = 'list-' + favIteration
-        //     var newObj = {}
-        //     newObj[objKey] = inputValue
+            //  pushes the new movie object into the array within fetchedList
+            favList.list.push(newObj)
+            localStorage.setItem('favList', JSON.stringify(favList))
             
-        //     //  pushes the new movie object into the array within fetchedList
-        //     favList.list.push(newObj)
-        //     localStorage.setItem('favList', JSON.stringify(favList))
+            $('#favSortable').append(liElement)
             
-        //     $('#favSortable').append(liElement)
+            favIteration++
+            localStorage.setItem('favIteration', favIteration)
+        });
+
+        // fetches favorite list from local storage and displays on page load
+        if (!JSON.parse(localStorage.getItem('favList')))
+        {
+            favList = {
+                list: []
+            }
+        }
+        else {
+            favList = JSON.parse(localStorage.getItem('favList'))
+        }
+
+        for (var i = 0; i < favList.list.length ;i++) {
+            var listObj = favList.list[i]
+            key = Object.keys(listObj)[0]
+
+            movieName = favList.list[i][key]
+            var liElement = $('<li>').attr('id', key).addClass('ui-state-default border border-2 rounded hover-element me-1 m-1 d-inline-block w-75').text(movieName)
+            var removeButton = $('<button>').attr('id', 'btn-item-' +i).addClass('remove-btn').text('X')
+
+            // append the remove button to the liEliment
+            // liElement.append(removeButton)
+
+            $('#favSortable').append(liElement)
+            $('#favSortable').append(removeButton)
+            liElement.on('click', function() {
+                var textContent = $(this).text();
+                textContentWS = textContent.replace(/\s/g, "+");
+                movieApi(textContentWS);
+                moviePoster(textContentWS);
+                // movieTrailer(textContentWS);
+                })
+
+        }
+
+        $('#favSortable').on('click', '.remove-btn', function() {
+            var listItem = $(this).prev(); // Select the previous sibling (li element)
+            var buttonId = $(this).attr('id');
+            var index = buttonId.split('-')[2];
+
+            favList.list.splice(index, 1)
             
-        //     favIteration++
-        //     localStorage.setItem('favIteration', favIteration)
-        // });
-
-        // // fetches favorite list from local storage and displays on page load
-        // if (!JSON.parse(localStorage.getItem('favList')))
-        // {
-        //     favList = {
-        //         list: []
-        //     }
-        // }
-        // else {
-        //     favList = JSON.parse(localStorage.getItem('favList'))
-        // }
-
-        // for (var i = 0; i < favList.list.length ;i++) {
-        //     var listObj = favList.list[i]
-        //     key = Object.keys(listObj)[0]
-
-        //     movieName = favList.list[i][key]
-        //     var liElement = $('<li>').attr('id', key).addClass('ui-state-default border border-2 rounded hover-element me-1 m-1 d-inline-block w-75').text(movieName)
-        //     var removeButton = $('<button>').attr('id', 'btn-item-' +i).addClass('remove-btn').text('X')
-
-        //     // append the remove button to the liEliment
-        //     // liElement.append(removeButton)
-
-        //     $('#favSortable').append(liElement)
-        //     $('#favSortable').append(removeButton)
-        //     liElement.on('click', function() {
-        //         var textContent = $(this).text();
-        //         textContentWS = textContent.replace(/\s/g, "+");
-        //         movieApi(textContentWS);
-        //         moviePoster(textContentWS);
-        //         // movieTrailer(textContentWS);
-        //         })
-
-        // }
-
-        // $('#favSortable').on('click', '.remove-btn', function() {
-        //     var listItem = $(this).prev(); // Select the previous sibling (li element)
-        //     var buttonId = $(this).attr('id');
-        //     var index = buttonId.split('-')[2];
-
-        //     favList.list.splice(index, 1)
-            
-        //     listItem.remove();
-        //     $(this).remove(); // Remove the clicked remove button
-        //     localStorage.setItem('favList', JSON.stringify(favList));
-        // });
+            listItem.remove();
+            $(this).remove(); // Remove the clicked remove button
+            localStorage.setItem('favList', JSON.stringify(favList));
+        });
 
 
 // for loop that on page load iterates through the localStorage and then adds the fav items to the fav list. 
-// for (var i = 0; i < localStorage.list.length; i++) {
+for (var i = 0; i < localStorage.list.length; i++) {
     
-//     if(localStorage.key(i).startsWith('fav')) {
-//                 movieName = localStorage.getItem(localStorage.key(i));
+    if(localStorage.key(i).startsWith('fav')) {
+                movieName = localStorage.getItem(localStorage.key(i));
 
-//         if (movieName) {
-//             var liElement = $('<li>').attr('id', 'fav-' +i).addClass('ui-state-default border border-2 rounded hover-element').text(movieName)
-//             $('#favSortable').append(liElement);
+        if (movieName) {
+            var liElement = $('<li>').attr('id', 'fav-' +i).addClass('ui-state-default border border-2 rounded hover-element').text(movieName)
+            $('#favSortable').append(liElement);
 
-//             liElement.on('click', function() {
-//                 var textContent = $(this).text();
-//                 textContentWS = textContent.replace(/\s/g, "+");
-//                 movieApi(textContentWS);
-//                 moviePoster(textContentWS);
-//                 movieTrailer(textContentWS);
-//             })
-//         }; 
-//     }
-// }
+            liElement.on('click', function() {
+                var textContent = $(this).text();
+                textContentWS = textContent.replace(/\s/g, "+");
+                movieApi(textContentWS);
+                moviePoster(textContentWS);
+                movieTrailer(textContentWS);
+            })
+        }; 
+    }
+}
 
 
 
