@@ -144,13 +144,19 @@ h2 {
     list-style-type: none; 
     margin: 0; 
     padding: 0; 
-    width: 60%; }
+    width: 60%; 
+}
 
 #sortable { 
     list-style-type: none; 
     margin: 0; 
     padding: 0; 
-    width: 60%; }
+    width: 60%; 
+}
+
+.hover-button:hover {
+    color: var(--w);
+}
 
 .icons {
     position: absolute;

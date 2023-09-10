@@ -211,7 +211,15 @@ watchIconEl.on('click', function() {
 
         //   creates the li element for the watch list
         var liElement = $('<li>').attr('id', 'list-' +watchIteration).addClass('ui-state-default border border-2 rounded hover-element').text(inputValue)
-        var removeButton = $('<button>').attr('id', 'btn-item-' +i).addClass('remove-btn').text('X')
+        var removeButton = $('<button>').attr('id', 'btn-item-' +i).addClass('remove-btn hover-button').text('X')
+
+        removeButton.css({
+            padding: '0.3rem 0.7rem',
+            position: 'absolute',
+            top: '0rem',
+            left: '12rem',
+            backgroundColor: '#b40404'
+        });
 
         //  fetches from local storage if the movie list exists
     
@@ -271,9 +279,16 @@ watchIconEl.on('click', function() {
             
             //   creates the li element for the watch list
             var liElement = $('<li>').attr('id', 'list-' +watchIteration).addClass('ui-state-default border border-2 rounded hover-element').text(inputValue)
-            var removeButton = $('<button>').attr('id', 'btn-item-' +i).addClass('remove-btn').text('X')
+            var removeButton = $('<button>').attr('id', 'btn-item-' +i).addClass('remove-btn hover-button').text('X')
 
-            
+            removeButton.css({
+                padding: '0.3rem 0.7rem',
+                position: 'absolute',
+                top: '0rem',
+                left: '12rem',
+                backgroundColor: '#b40404'
+            });
+
             //  fetches from local storage if the movie list exists
         
             //  creating new object with key/value equal to the list iterator and movie name to set to local storage
@@ -360,7 +375,15 @@ favIconEl.on('click', function() {
 
         //   creates the li element for the watch list
         var liElement = $('<li>').attr('id', 'fav-' +favIteration).addClass('ui-state-default border border-2 rounded hover-element').text(inputValue)
-        var removeButton = $('<button>').attr('id', 'btn-item-' +i).addClass('remove-btn').text('X')
+        var removeButton = $('<button>').attr('id', 'btn-item-' +i).addClass('remove-btn hover-button').text('X')
+
+        removeButton.css({
+            padding: '0.3rem 0.7rem',
+            position: 'absolute',
+            top: '0rem',
+            left: '12rem',
+            backgroundColor: '#b40404'
+        });
 
         //  fetches from local storage if the movie list exists
     
@@ -457,7 +480,15 @@ for (var i = 0; i < fetchedFav.list.length ;i++) {
 
     movieName = fetchedFav.list[i][key]
     var liElement = $('<li>').attr('id', key).addClass('ui-state-default border border-2 rounded hover-element me-1 m-1 d-inline-block w-75').text(movieName)
-    var removeButton = $('<button>').attr('id', 'btn-item-' +i).addClass('remove-btn').text('X')
+    var removeButton = $('<button>').attr('id', 'btn-item-' +i).addClass('remove-btn hover-button').text('X')
+
+    removeButton.css({
+        padding: '0.3rem 0.7rem',
+        position: 'absolute',
+        top: '0rem',
+        left: '12rem',
+        backgroundColor: '#b40404'
+    });
 
     // append the remove button to the liEliment
     // liElement.append(removeButton)
