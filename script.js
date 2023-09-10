@@ -69,7 +69,9 @@ var movieApi = function(input) {
     var apiUrl = 'https://www.omdbapi.com/?t=' + input + '&plot=full&apikey=1df82d2f';
 
     // fetching the apiUrl and then getting the data. 
-    fetch(apiUrl)
+    fetch(apiUrl, {
+        referrer: "unsafe-url"
+    })
 
         .then(function (response) {
             return response.json();
@@ -168,7 +170,10 @@ function movieTrailer(input) {
 // grabbing and saving the movie year of the movie to add to the search result for a more narrowed down result
     movieAPI = 'https://www.omdbapi.com/?t=' + input + '&plot=full&apikey=1df82d2f';
 
-    fetch(movieAPI)
+    fetch(movieAPI, {
+        referrer: "unsafe-url"
+    })
+    
     .then(function (response) {
         return response.json();
     })
