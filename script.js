@@ -21,11 +21,11 @@ var LS = {
 }
 
 // WIP
-// if (!localStorage.getItem('favIteration')){
-//     favIteration = 0
-// } else {
-//     favIteration = localStorage.getItem('favIteration')
-// }
+if (!localStorage.getItem('favIteration')){
+    favIteration = 0
+} else {
+    favIteration = localStorage.getItem('favIteration')
+}
 
 // When clicking on the logo, user is taken back to splash page
 goBack.on("click", function(event) {
@@ -189,8 +189,8 @@ function movieTrailer(input) {
 
         // takes the first result and then update the iframe src with it
         trailerId = data.items[0].id.videoId
-        trailerURL = 'https://www.youtube.com/embed/'+ trailerId + '?rel=0'
-        movTrailerEl.attr('src', trailerURL)
+        // trailerURL = 'https://www.youtube.com/embed/'+ trailerId + '?rel=0'
+        // movTrailerEl.attr('src', trailerURL)
     });
 };
 
@@ -302,6 +302,7 @@ for (var i = 0; i < fetchedList.list.length ;i++) {
     var liElement = $('<li>').attr('id', key).addClass('ui-state-default border border-2 rounded hover-element me-1 m-1 d-inline-block w-75').text(movieName)
     var removeButton = $('<button>').attr('id', 'btn-item-' +i).addClass('remove-btn').text('X')
 
+
     // append the remove button to the liEliment
     // liElement.append(removeButton)
 
@@ -324,7 +325,7 @@ for (var i = 0; i < fetchedList.list.length ;i++) {
 //     inputValue = $(this).text();
 //     var textContent = $(this).text();
 //     textContentWS = textContent.replace(/\s/g, "+");
-//     movieApi(textContentWS);
+//     movieApi(textContentWS);dd
 //     moviePoster(textContentWS);
 //     // movieTrailer(textContentWS);
 //     })
@@ -333,9 +334,12 @@ for (var i = 0; i < fetchedList.list.length ;i++) {
 $('#sortable').on('click', '.remove-btn', function() {
     var listItem = $(this).prev(); // Select the previous sibling (li element)
     var buttonId = $(this).attr('id');
-    var index = buttonId.split('-')[2];
-
-    fetchedList.list.splice(index, 1)
+    var listItemId = $(this).prev().attr('id') // gets the id of the list element
+    // var index = buttonId.split('-')[2];
+    
+    fetchedList.list = fetchedList.list.filter(item => !item.hasOwnProperty(listItemId))
+    
+    console.log("updated fetechedList", fetchedList)
     
     listItem.remove();
     $(this).remove(); // Remove the clicked remove button
@@ -347,88 +351,93 @@ $( function() {
 });
 
 // WIP
-        //   on clicking the favIcon it will generate a new li in the fav list ul. Along with that it will create a unique id with the 'i' variable for saving locally
-        favIconEl.on('click', function() {
+//   on clicking the favIcon it will generate a new li in the fav list ul. Along with that it will create a unique id with the 'i' variable for saving locally
+favIconEl.on('click', function() {
 
-            // removes outline of heart button and replaces with solid  heart on
-            $('i.fa-heart').removeClass('fa-regular');
-            $('i.fa-heart').addClass('fa-solid');
-        
-            //   creates the li element for the fav list
-            var liElement = $('<li>').attr('id', 'fav-' +favIteration).addClass('ui-state-default border border-2 rounded hover-element').text(inputValue)
-            
-            // fetches from local storage if the movie list exsits
-            
-            if (!JSON.parse(localStorage.getItem('favList')))
-            {
-                favList = {
-                    list: []
-                }
-            }
-            else {
-                favList = JSON.parse(localStorage.getItem('favList'))
-            }
-
-            //  creating new object with key/value equal to the list iterator and movie name to set to local storage
-            var objKey = 'list-' + favIteration
-            var newObj = {}
-            newObj[objKey] = inputValue
-            
-            //  pushes the new movie object into the array within fetchedList
-            favList.list.push(newObj)
-            localStorage.setItem('favList', JSON.stringify(favList))
-            
-            $('#favSortable').append(liElement)
-            
-            favIteration++
-            localStorage.setItem('favIteration', favIteration)
-        });
-
-        // fetches favorite list from local storage and displays on page load
-        if (!JSON.parse(localStorage.getItem('favList')))
-        {
-            favList = {
-                list: []
-            }
+    // removes outline of heart button and replaces with solid  heart on
+    $('i.fa-heart').removeClass('fa-regular');
+    $('i.fa-heart').addClass('fa-solid');
+    
+    //   creates the li element for the fav list
+    var liElement = $('<li>').attr('id', 'fav-' +favIteration).addClass('ui-state-default border border-2 rounded hover-element').text(inputValue)
+    
+    // fetches from local storage if the movie list exsits
+    
+    if (!JSON.parse(localStorage.getItem('favList')))
+    {
+        favList = {
+            list: []
         }
-        else {
-            favList = JSON.parse(localStorage.getItem('favList'))
-        }
+    }
+    else {
+        favList = JSON.parse(localStorage.getItem('favList'))
+    }
 
-        for (var i = 0; i < favList.list.length ;i++) {
-            var listObj = favList.list[i]
-            key = Object.keys(listObj)[0]
+    //  creating new object with key/value equal to the list iterator and movie name to set to local storage
+    var objKey = 'list-' + favIteration
+    var newObj = {}
+    newObj[objKey] = inputValue
+    
+    //  pushes the new movie object into the array within fetchedList
+    favList.list.push(newObj)
+    localStorage.setItem('favList', JSON.stringify(favList))
+    
+    $('#favSortable').append(liElement)
+    
+    favIteration++
+    localStorage.setItem('favIteration', favIteration)
+});
 
-            movieName = favList.list[i][key]
-            var liElement = $('<li>').attr('id', key).addClass('ui-state-default border border-2 rounded hover-element me-1 m-1 d-inline-block w-75').text(movieName)
-            var removeButton = $('<button>').attr('id', 'btn-item-' +i).addClass('remove-btn').text('X')
+// fetches favorite list from local storage and displays on page load
+if (!JSON.parse(localStorage.getItem('favList')))
+{
+    favList = {
+        list: []
+    }
+}
+else {
+    favList = JSON.parse(localStorage.getItem('favList'))
+}
 
-            // append the remove button to the liEliment
-            // liElement.append(removeButton)
+for (var i = 0; i < favList.list.length ;i++) {
+    var listObj = favList.list[i]
+    key = Object.keys(listObj)[0]
 
-            $('#favSortable').append(liElement)
-            $('#favSortable').append(removeButton)
-            liElement.on('click', function() {
-                var textContent = $(this).text();
-                textContentWS = textContent.replace(/\s/g, "+");
-                movieApi(textContentWS);
-                moviePoster(textContentWS);
-                // movieTrailer(textContentWS);
-                })
+    movieName = favList.list[i][key]
+    var liElement = $('<li>').attr('id', key).addClass('ui-state-default border border-2 rounded hover-element me-1 m-1 d-inline-block w-75').text(movieName)
+    var removeButton = $('<button>').attr('id', 'btn-item-' +i).addClass('remove-btn').text('X')
 
-        }
+    // append the remove button to the liEliment
+    // liElement.append(removeButton)
 
-        $('#favSortable').on('click', '.remove-btn', function() {
-            var listItem = $(this).prev(); // Select the previous sibling (li element)
-            var buttonId = $(this).attr('id');
-            var index = buttonId.split('-')[2];
+    $('#favSortable').append(liElement)
+    $('#favSortable').append(removeButton)
 
-            favList.list.splice(index, 1)
-            
-            listItem.remove();
-            $(this).remove(); // Remove the clicked remove button
-            localStorage.setItem('favList', JSON.stringify(favList));
-        });
+    liElement.on('click', function() {
+        var textContent = $(this).text();
+        textContentWS = textContent.replace(/\s/g, "+");
+        movieApi(textContentWS);
+        moviePoster(textContentWS);
+        // movieTrailer(textContentWS);
+        })
+
+}
+
+$('#favSortable').on('click', '.remove-btn', function() {
+     var listItem = $(this).prev(); // Select the previous sibling (li element)
+    var buttonId = $(this).attr('id');
+    var listItemId = $(this).prev().attr('id') // gets the id of the list element
+    // var index = buttonId.split('-')[2];
+    
+    fetchedList.list = fetchedList.list.filter(item => !item.hasOwnProperty(listItemId))
+    
+    console.log("updated fetechedList", fetchedList)
+    
+    listItem.remove();
+    $(this).remove(); // Remove the clicked remove button
+    localStorage.setItem('watchList', JSON.stringify(fetchedList));
+  
+});
 
 
 // for loop that on page load iterates through the localStorage and then adds the fav items to the fav list. 
