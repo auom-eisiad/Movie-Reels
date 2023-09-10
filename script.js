@@ -134,6 +134,18 @@ function moviePoster(input) {
         moviePic.removeClass('d-none')
         watchIconEl.removeClass('d-none')
         favIconEl.removeClass('d-none')
+
+        // switches star button back to silohuette when a new search is clicked
+        $('i.fa-star').removeClass('fa-solid');
+        $('i.fa-star').addClass('fa-regular');
+
+        // switches heart button back to silohuette when a new search is clicked
+        $('i.fa-heart').removeClass('fa-solid');
+        $('i.fa-heart').addClass('fa-regular');
+
+
+
+
     })
     .catch(function(error) {
         console.log(error);
@@ -180,6 +192,10 @@ $( function() {
 
 //   on clicking the watchIcon it will generate a new li in the watch list ul. Along with that it will create a unique id with the 'i' variable for saving locally
 watchIconEl.on('click', function() {
+
+    // removes outline of star button and replaces with solid one
+    $('i.fa-star').removeClass('fa-regular');
+    $('i.fa-star').addClass('fa-solid');
 
     if (fetchedList.list.length == 0) {
 
@@ -416,25 +432,25 @@ $('#favSortable').on('click', '.remove-btn', function() {
 
 
 // for loop that on page load iterates through the localStorage and then adds the fav items to the fav list. 
-// for (var i = 0; i < localStorage.list.length; i++) {
+for (var i = 0; i < localStorage.list.length; i++) {
     
-//     if(localStorage.key(i).startsWith('fav')) {
-//                 movieName = localStorage.getItem(localStorage.key(i));
+    if(localStorage.key(i).startsWith('fav')) {
+                movieName = localStorage.getItem(localStorage.key(i));
 
-//         if (movieName) {
-//             var liElement = $('<li>').attr('id', 'fav-' +i).addClass('ui-state-default border border-2 rounded hover-element').text(movieName)
-//             $('#favSortable').append(liElement);
+        if (movieName) {
+            var liElement = $('<li>').attr('id', 'fav-' +i).addClass('ui-state-default border border-2 rounded hover-element').text(movieName)
+            $('#favSortable').append(liElement);
 
-//             liElement.on('click', function() {
-//                 var textContent = $(this).text();
-//                 textContentWS = textContent.replace(/\s/g, "+");
-//                 movieApi(textContentWS);
-//                 moviePoster(textContentWS);
-//                 movieTrailer(textContentWS);
-//             })
-//         }; 
-//     }
-// }
+            liElement.on('click', function() {
+                var textContent = $(this).text();
+                textContentWS = textContent.replace(/\s/g, "+");
+                movieApi(textContentWS);
+                moviePoster(textContentWS);
+                movieTrailer(textContentWS);
+            })
+        }; 
+    }
+}
 
 
 
