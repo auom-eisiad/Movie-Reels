@@ -12,6 +12,7 @@ var moviePic = $('.poster');
 var movTrailerEl = $('iframe');
 var watchIconEl = $('#watchIcon')
 var favIconEl = $('#favIcon'); 
+var goBack = $('.logo');
 var inputValue = ''
 var watchIteration = 0
 var favIteration = 0
@@ -25,6 +26,13 @@ if (!localStorage.getItem('favIteration')){
 } else {
     favIteration = localStorage.getItem('favIteration')
 }
+
+// When clicking on the logo, user is taken back to splash page
+goBack.on("click", function(event) {
+    event.preventDefault();
+
+    document.location.replace('./moviereels.html');
+});
 
 if (!localStorage.getItem('watchIteration')){
     watchIteration = 0
@@ -42,7 +50,7 @@ movieForm.on('submit', function(event) {
 
     movieApi(inputValueWS);
     moviePoster(inputValueWS);
-    // movieTrailer(inputValueWS);
+    movieTrailer(inputValueWS);
 });
 
 function validateForm() {
@@ -85,7 +93,8 @@ var movieApi = function(input) {
                     ratings.forEach(rating => {
                     const source = rating.Source;
                     const value = rating.Value;
-                    const ratingHTML = `<p>${source}</p><p>Rating: ${value}</p>`;
+                    const valueColor = "#fcc200";
+                    const ratingHTML = `<p>${source}: <span style="color: ${valueColor};">${value}</span></p>`;
                     ratingsHTML += ratingHTML;
                 });
 
@@ -190,7 +199,7 @@ $( function() {
     $( "#sortable" ).sortable();
 } );
 
-//   on clicking the watchIcon it will generate a new li in the watch list ul. Along with that it will create a unique id with the 'i' variable for saving locally
+// on clicking the watchIcon it will generate a new li in the watch list ul. Along with that it will create a unique id with the 'i' variable for saving locally
 watchIconEl.on('click', function() {
 
     // removes outline of star button and replaces with solid one
@@ -273,7 +282,7 @@ watchIconEl.on('click', function() {
     
 });
 
-//  fetching saved fav movies when page loads
+// fetching saved fav movies when page loads
 if (!JSON.parse(localStorage.getItem('watchList')))
 {
     fetchedList = {

@@ -1,5 +1,6 @@
 :root {
     --fontfam: 'DM Sans', sans-serif;
+    --fontfam2: 'Bebas Neue', sans-serif;
     --ftsize: 18px;
     --pri: #b40404;
     --sec: #fcc200;
@@ -19,21 +20,43 @@
     box-sizing: border-box;
 }
 
+/* SCROLLBAR STYLE */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px var(--bg3); 
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: var(--pri); 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--for); 
+}
+
 ul {
     list-style-type: none;
 }
 
 body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
     font-family: var(--fontfam);
     font-size: var(--ftsize);
     color: var(--w);
     background-color: var(--bg);
+    overflow: hidden;
 }
 
 header {
     background-color: var(--bg2);
     border-bottom: 2px solid var(--bg4);
     height: 10rem;
+    overflow: hidden;
 }
 
 .logo {
@@ -42,6 +65,7 @@ header {
     margin-top: 1rem;
     margin-left: 2rem;
     margin-right: 12rem;
+    cursor:pointer;
 }
 
 input {
@@ -73,40 +97,66 @@ input:focus::placeholder {
     color: transparent;
 }
 
+/* Remove the bottom margin from the columns class using !important */
+.columns.is-gapless:not(:last-child) {
+    margin-bottom: 0 !important;
+}
+
 #movie-list {
     background-color: var(--bg2);
-    border-right: 3px solid var(--bg4);
+    border-right: 2px solid var(--bg4);
+    min-height: 100vh;
 }
 
 #title {
-    font-family: var(--fontfam);
+    font-family: var(--fontfam2);
     font-size: 3rem;
 }
 
 h2 {
     margin-top: 0.5rem;
+    font-family: var(--fontfam2);
+    font-size: 30px;
+}
+
+#postMovie {
+    float: left; /* Float the postMovie div to the left */
+    margin-right: 10px; /* Add some right margin to create space between postMovie and box */
+    padding: 0;
+}
+
+.poster-container {
+    display: flex;
+    justify-content: center; /* Horizontally center the poster */
+    align-items: center; /* Vertically center the poster */
 }
 
 .poster {
-    max-width: 25%;
-    max-height: 25%;
+    max-width: 100%;
+    max-height: 100%;
+    margin-top: 1rem;
     margin-left: 1rem;
     display: flex;
-    position: relative;
     text-align: left;
 }
 
-#favSortable {list-style-type: none; margin: 0; padding: 0; width: 60%; }
+#favSortable {
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0; 
+    width: 60%; }
 
-#sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
-/* #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
-#sortable li span { position: absolute; margin-left: -1.3em; } */
+#sortable { 
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0; 
+    width: 60%; }
 
 .icons {
     position: absolute;
     z-index: 2;
     margin-left: 2rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
 }
 
 #watchIcon:hover {
@@ -125,8 +175,44 @@ h2 {
 .plot {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+/* Override Bulma's width for .column.is-8 and .column.is-8-tablet for index.html line 97*/
+.column.is-8, .column.is-8-tablet {
+    width: auto !important;
+    flex: none !important;
+}
+
+#rating {
+    font-family: var(--fontfam2);
+    font-size: 25px;
+    margin-top: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 footer {
     background-color: var(--bg2);
+    border-top: 2px solid var(--bg4);
+    min-height: 10vh;
+    padding-top: 2rem;
+}
+
+/* MEDIA QUERY */
+@media screen and (max-width: 576px) {
+    .plot {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    
 }

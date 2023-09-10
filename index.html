@@ -19,15 +19,17 @@
       crossorigin="anonymous"
     />
 
+    <!-- JQuery UI -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"/>
 
     <!-- added a shortcut icon as our website logo -->
-    <link rel="shortcut icon" type="icon" href="./assets/images/movie-icon.jpg"/>
+    <link rel="shortcut icon" type="icon" href="./assets/images/reels.png"/>
 
     <!-- Google Fonts used -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="./assets/style.css"/>
 
@@ -45,7 +47,7 @@
       </form>
     </header>
 
-    <div class="columns is-gapless is-multiline">
+    <div class="columns is-gapless">
 
       <!-- Movies list -->
       <div id="movie-list" class="column is-2 is-flex is-flex-direction-column">
@@ -67,15 +69,13 @@
       </div>
 
       <main class="column is-10 has-text-centered">
-        
-        <!-- movie title -->
-        <h2 id="title" class="is-sr-only">Movie Title Here</h2>
 
-        <div class="columns is-gapless is-multiline">
+        <div id="postMovie" class="columns is-gapless is-multiline">
 
           <!-- movie poster -->
-          <!-- added class='d-none'. This will hide the element till removed.  -->
-          <img class="poster is-sr-only" src="" alt="movie poster"/>
+          <div class="poster-container">
+            <img class="poster is-sr-only" src="" alt="movie poster"/>
+          </div>
 
             <div class="icons">
             <!-- adding a watch list icon -->
@@ -84,37 +84,36 @@
             <!-- adding Favorite 'HEART' icon -->
             <i id="favIcon" class="love fa-regular fa-heart fa-xl is-sr-only" title = "Add to Favorites" style="color: #cc0000;" alt="favorite list heart icon"></i>
             </div>
+        </div>
 
+        <!-- movie title -->
+        <h2 id="title" class="is-sr-only">Movie Title Here</h2>
+
+          <!-- movie trailer -->
+          <iframe width="800" height="400" src="" 
+          title="YouTube video player" frameborder="1" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          
           <!-- movie plot -->
-          <div class="plot column is-7 has-text-centered">
+          <div class="plot column is-8 has-text-centered">
           </div>
 
           <!-- movie rating -->
-          <div id="rating" class="column is-3">
+          <div id="rating" class="">
           </div>
-
-        </div>
-
-        <!-- movie trailer -->
-        <!-- swapped out the previous video assest. It wasn't compatable with youtube -->
-        <!-- the below iframe code is supplied by youtube when going to share and then selecting embed. Adjusted it so it doesn't show suggested videos on pause or at the end -->
-        <iframe width="560" height="315" src="" 
-        title="YouTube video player" frameborder="1" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div>
-
+        
       </main>
     </div>
 
     <!-- All script files used -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
     <!-- added fontawesome script link -->
     <script src="https://kit.fontawesome.com/e1d81dddcf.js" crossorigin="anonymous"></script>
+    
     <!-- <script src="//cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script> -->
     <script src="./script.js"></script>
 
+    <footer class="has-text-centered">Powered by BST</footer>
     </body>
-
-  <footer></footer>
-
  </html>
