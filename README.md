@@ -1,6 +1,8 @@
 # Movie-Reels
 
 ## Description
+Website: https://auom-eisiad.github.io/Movie-Reels/moviereels.html
+![Website](assets/images/website.png)
 
 Movie-Reels is an application that allows users to search for movie titles and find info about them. (ie. Movie Poster, Plot, Reviews from Critics, Trailer)
 Then users can add that title to a watchlsit to reference later.
@@ -23,7 +25,7 @@ If your README is long, add a table of contents to make it easy for users to fin
 
 ## Installation
 
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+N/A
 
 ## Usage
 
