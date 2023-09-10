@@ -71,8 +71,8 @@ header {
 .quote {
     position: absolute;
     top: 48%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    left: 45%;
+    transform: translate(-40%, -50%);
     font-size: 5rem;
     font-family: var(--fontfam);
     color: var(--b);
@@ -101,11 +101,25 @@ header {
     .quote {
         position: absolute;
         top: 40%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 5rem;
+        left: -15%;
+        transform: translate(20%, -50%);
+        font-size: 2.3rem;
         font-family: var(--fontfam);
         color: var(--b);
+    }
+
+    #home {
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: var(--for);
+        color: white;
+        font-size: 2rem;
+        padding: 1rem 5rem;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
     }
 }
 
@@ -113,8 +127,8 @@ header {
     .quote {
         position: absolute;
         top: 48%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        left: 45%;
+        transform: translate(-40%, -50%);
         font-size: 5rem;
         font-family: var(--fontfam);
         color: var(--b);
