@@ -1,6 +1,4 @@
 // OMDb API: http://www.omdbapi.com/?i=tt3896198&apikey=1df82d2f
-// when user input name, have it seperate by each space and then input the string individually. 
-// when api response have it give error
 // example of how the api url http://www.omdbapi.com/?t=the+shining&plot=full
 
 var movieForm = $('#movie-form');
@@ -20,7 +18,6 @@ var LS = {
     list: []
 }
 
-// WIP
 if (!localStorage.getItem('favIteration')){
     favIteration = 0
 } else {
@@ -135,7 +132,6 @@ function moviePoster(input) {
         // Access the first movie in the response
         var movie = data.results[0];
 
-        // console.log(movie);
 
         // Retrieve the poster image URL
         var posterURL = "https://image.tmdb.org/t/p/w500" + movie.poster_path;
@@ -215,6 +211,7 @@ watchIconEl.on('click', function() {
 
         //   creates the li element for the watch list
         var liElement = $('<li>').attr('id', 'list-' +watchIteration).addClass('ui-state-default border border-2 rounded hover-element').text(inputValue)
+        var removeButton = $('<button>').attr('id', 'btn-item-' +i).addClass('remove-btn').text('X')
 
         //  fetches from local storage if the movie list exists
     
@@ -228,6 +225,16 @@ watchIconEl.on('click', function() {
         localStorage.setItem('watchList', JSON.stringify(fetchedList))
     
         $('#sortable').append(liElement)
+        $('#sortable').append(removeButton)
+
+        liElement.on('click', function() {
+            inputValue = $(this).text();
+            var textContent = $(this).text();
+            textContentWS = textContent.replace(/\s/g, "+");
+            movieApi(textContentWS);
+            moviePoster(textContentWS);
+            // movieTrailer(textContentWS);
+            })
     
         watchIteration++
         localStorage.setItem('watchIteration', watchIteration)
@@ -243,7 +250,6 @@ watchIconEl.on('click', function() {
             key = Object.keys(listObj)[0]
             movieName = fetchedList.list[i][key]
             movieArray.push(movieName)
-            console.log(movieName)
             
         }
         // checking the movieArray to see if the input value matches.
@@ -265,6 +271,8 @@ watchIconEl.on('click', function() {
             
             //   creates the li element for the watch list
             var liElement = $('<li>').attr('id', 'list-' +watchIteration).addClass('ui-state-default border border-2 rounded hover-element').text(inputValue)
+            var removeButton = $('<button>').attr('id', 'btn-item-' +i).addClass('remove-btn').text('X')
+
             
             //  fetches from local storage if the movie list exists
         
@@ -278,11 +286,12 @@ watchIconEl.on('click', function() {
             localStorage.setItem('watchList', JSON.stringify(fetchedList))
         
             $('#sortable').append(liElement)
+            $('#sortable').append(removeButton)
         
             watchIteration++
-            localStorage.setItem('watchIteration', watchIteration)
-    
+            localStorage.setItem('watchIteration', watchIteration)    
         }
+
     } 
     
 });
@@ -323,29 +332,14 @@ for (var i = 0; i < fetchedList.list.length ;i++) {
         })
 
 }
-
-
+    
 // function to add on click search on the watch list buttons
-// $('#sortable').on('click', function() {
-//     inputValue = $(this).text();
-//     var textContent = $(this).text();
-//     textContentWS = textContent.replace(/\s/g, "+");
-//     movieApi(textContentWS);dd
-//     moviePoster(textContentWS);
-//     // movieTrailer(textContentWS);
-//     })
-
-
 $('#sortable').on('click', '.remove-btn', function() {
     var listItem = $(this).prev(); // Select the previous sibling (li element)
-    var buttonId = $(this).attr('id');
     var listItemId = $(this).prev().attr('id') // gets the id of the list element
-    // var index = buttonId.split('-')[2];
     
     fetchedList.list = fetchedList.list.filter(item => !item.hasOwnProperty(listItemId))
-    
-    console.log("updated fetechedList", fetchedList)
-    
+        
     listItem.remove();
     $(this).remove(); // Remove the clicked remove button
     localStorage.setItem('watchList', JSON.stringify(fetchedList));
@@ -355,60 +349,113 @@ $( function() {
     $( "#favSortable" ).sortable();
 });
 
-// WIP
 //   on clicking the favIcon it will generate a new li in the fav list ul. Along with that it will create a unique id with the 'i' variable for saving locally
 favIconEl.on('click', function() {
 
     // removes outline of heart button and replaces with solid  heart on
     $('i.fa-heart').removeClass('fa-regular');
     $('i.fa-heart').addClass('fa-solid');
-    
-    //   creates the li element for the fav list
-    var liElement = $('<li>').attr('id', 'fav-' +favIteration).addClass('ui-state-default border border-2 rounded hover-element').text(inputValue)
-    
-    // fetches from local storage if the movie list exsits
-    
-    if (!JSON.parse(localStorage.getItem('favList')))
-    {
-        favList = {
-            list: []
-        }
-    }
-    else {
-        favList = JSON.parse(localStorage.getItem('favList'))
-    }
 
-    //  creating new object with key/value equal to the list iterator and movie name to set to local storage
-    var objKey = 'list-' + favIteration
-    var newObj = {}
-    newObj[objKey] = inputValue
+    if (fetchedFav.list.length == 0) {
+
+        //   creates the li element for the watch list
+        var liElement = $('<li>').attr('id', 'fav-' +favIteration).addClass('ui-state-default border border-2 rounded hover-element').text(inputValue)
+        var removeButton = $('<button>').attr('id', 'btn-item-' +i).addClass('remove-btn').text('X')
+
+        //  fetches from local storage if the movie list exists
     
-    //  pushes the new movie object into the array within fetchedList
-    favList.list.push(newObj)
-    localStorage.setItem('favList', JSON.stringify(favList))
+        //  creating new object with key/value equal to the list iterator and movie name to set to local storage
+        var objKey = 'fav-' + favIteration
+        var newObj = {}
+        newObj[objKey] = inputValue
+        
+        //  pushes the new movie object into the array within fetchedList
+        fetchedFav.list.push(newObj)
+        localStorage.setItem('favList', JSON.stringify(fetchedFav))
     
-    $('#favSortable').append(liElement)
+        $('#favSortable').append(liElement)
+        $('#favSortable').append(removeButton)
+
+        liElement.on('click', function() {
+            inputValue = $(this).text();
+            var textContent = $(this).text();
+            textContentWS = textContent.replace(/\s/g, "+");
+            movieApi(textContentWS);
+            moviePoster(textContentWS);
+            // movieTrailer(textContentWS);
+            })
     
-    favIteration++
-    localStorage.setItem('favIteration', favIteration)
+        favIteration++
+        localStorage.setItem('favIteration', favIteration)
+
+    } else {
+
+        // creating a blank array to push the local saved items into
+        var movieArray = [];
+        
+        for (var i = 0; i < fetchedFav.list.length ;i++) {
+
+            var listObj = fetchedFav.list[i]
+            key = Object.keys(listObj)[0]
+            movieName = fetchedFav.list[i][key]
+            movieArray.push(movieName)
+            
+        }
+        // checking the movieArray to see if the input value matches.
+        if (!movieArray.includes(inputValue)) {
+
+            // fetches from local storage if the movie list exsits
+            if (!JSON.parse(localStorage.getItem('favList')))
+            {
+                fetchedFav = {
+                    list: []
+                }
+            }
+
+            // updating the fav list if there is
+            else {
+                fetchedFav = JSON.parse(localStorage.getItem('favList'))
+            }
+
+            //   creates the li element for the fav list
+            var liElement = $('<li>').attr('id', 'fav-' +favIteration).addClass('ui-state-default border border-2 rounded hover-element').text(inputValue)
+            var removeButton = $('<button>').attr('id', 'btn-item-' +i).addClass('remove-btn').text('X')
+            
+            //  creating new object with key/value equal to the list iterator and movie name to set to local storage
+            var objKey = 'fav-' + favIteration
+            var newObj = {}
+            newObj[objKey] = inputValue
+            
+            //  pushes the new movie object into the array within fetchedList
+            fetchedFav.list.push(newObj)
+            localStorage.setItem('favList', JSON.stringify(fetchedFav))
+            
+            $('#favSortable').append(liElement)
+            $('#favSortable').append(removeButton)
+            
+            favIteration++
+            localStorage.setItem('favIteration', favIteration)
+
+        }  
+    }
 });
 
 // fetches favorite list from local storage and displays on page load
 if (!JSON.parse(localStorage.getItem('favList')))
 {
-    favList = {
+    fetchedFav = {
         list: []
     }
 }
 else {
-    favList = JSON.parse(localStorage.getItem('favList'))
+    fetchedFav = JSON.parse(localStorage.getItem('favList'))
 }
 
-for (var i = 0; i < favList.list.length ;i++) {
-    var listObj = favList.list[i]
+for (var i = 0; i < fetchedFav.list.length ;i++) {
+    var listObj = fetchedFav.list[i]
     key = Object.keys(listObj)[0]
 
-    movieName = favList.list[i][key]
+    movieName = fetchedFav.list[i][key]
     var liElement = $('<li>').attr('id', key).addClass('ui-state-default border border-2 rounded hover-element me-1 m-1 d-inline-block w-75').text(movieName)
     var removeButton = $('<button>').attr('id', 'btn-item-' +i).addClass('remove-btn').text('X')
 
@@ -429,95 +476,16 @@ for (var i = 0; i < favList.list.length ;i++) {
 }
 
 $('#favSortable').on('click', '.remove-btn', function() {
-     var listItem = $(this).prev(); // Select the previous sibling (li element)
-    var buttonId = $(this).attr('id');
+    var listItem = $(this).prev(); // Select the previous sibling (li element)
+    console.log(listItem)
     var listItemId = $(this).prev().attr('id') // gets the id of the list element
-    // var index = buttonId.split('-')[2];
+    console.log(listItemId)
     
-    fetchedList.list = fetchedList.list.filter(item => !item.hasOwnProperty(listItemId))
-    
-    console.log("updated fetechedList", fetchedList)
-    
+    fetchedFav.list = fetchedFav.list.filter(item => !item.hasOwnProperty(listItemId))
+    console.log(fetchedFav)
+        
     listItem.remove();
     $(this).remove(); // Remove the clicked remove button
-    localStorage.setItem('watchList', JSON.stringify(fetchedList));
+    localStorage.setItem('favList', JSON.stringify(fetchedFav));
   
 });
-
-
-// for loop that on page load iterates through the localStorage and then adds the fav items to the fav list. 
-for (var i = 0; i < localStorage.list.length; i++) {
-    
-    if(localStorage.key(i).startsWith('fav')) {
-                movieName = localStorage.getItem(localStorage.key(i));
-
-        if (movieName) {
-            var liElement = $('<li>').attr('id', 'fav-' +i).addClass('ui-state-default border border-2 rounded hover-element').text(movieName)
-            $('#favSortable').append(liElement);
-
-            liElement.on('click', function() {
-                var textContent = $(this).text();
-                textContentWS = textContent.replace(/\s/g, "+");
-                movieApi(textContentWS);
-                moviePoster(textContentWS);
-                movieTrailer(textContentWS);
-            })
-        }; 
-    }
-}
-
-
-
-
-// working on code for using remove button on favorite with out refreshing screen
-// -------------------------------------------------------------------------------
-// $('#btn-item-' +iteration).on('click', function() {
-//     var listItem = $(this).prev(); // Select the previous sibling (li element)
-//     var buttonId = $(this).attr('id');
-//     var listItemId = listItem.attr('id');
-
-//     for (var movie of fetchedList.list) {
-//         console.log(fetchedList)
-//         var key = Object.keys(movie)[0];
-//         console.log(key, listItemId)
-//         if (listItemId == key) {
-//             console.log(movie)
-//             var removeIndex = fetchedList.list.indexOf(movie);
-//             console.log(removeIndex);
-//             fetchedList.list.splice(removeIndex, 1);
-//             console.log('if: ' + fetchedList.list);
-//             localStorage.setItem('watchList', JSON.stringify(fetchedList));
-//             console.log(JSON.parse(localStorage.getItem('watchList')));
-//         }
-//         else console.log('else: ' + fetchedList.list)
-//     }
-
-// })
-
-
-   
-    // var index = listItemId.split('-')[1];
-
-    // if (iteration == index){
-    //     var removeIndex = fetchedList.list.indexOf()
-    //     fetchedList.list.splice(removeIndex, 1)
-    // }
-
-    // for (i = 0; i<fetchedList.list.length; i++) {
-    //     if (buttonId == i)
-    // }
-    // for (var i = 0; i < fetchedList.list.length; i++)
-    // {
-    //     var keys = Object.keys(fetchedList.list[i]);
-    //     for (var t = 0; t < keys.length; t++){
-    //         var keyNum = keys[t].split('-')[1];
-    //         console.log(keyNum, index)
-    //         if (index == keyNum)
-    //         {
-    //             var removeIndex = fetchedList.list.indexOf(keys[t])
-    //             console.log(removeIndex)
-    //             fetchedList.list.splice(removeIndex, 1)
-    //         }
-
-    //     }
-    // }
