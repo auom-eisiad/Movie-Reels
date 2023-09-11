@@ -175,7 +175,7 @@ function movieTrailer(input) {
         localStorage.setItem('movieYear', movieYear)
 
         // refence the youtube api. Also note that trailer and movieYear is part of the search result
-        var trailerAPI = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=" + input + "+" + movieYear +"+trailer&key=AIzaSyCPwPkuOKdEBvPA0HbuhvkFs-xIAyb94Uc";
+        var trailerAPI = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=" + input + "+" + movieYear +"+trailer&key=AIzaSyAhfxizZ9w6dPngvwZARASdXU2mkF_C9lE";
         return fetch(trailerAPI);
     })
     
