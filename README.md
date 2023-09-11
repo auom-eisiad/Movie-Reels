@@ -31,21 +31,19 @@ N/A
 
 Instructions:
 
-How to use Search Function and Add buttons:
-
-![Search & Add](assets/images/fav-and-watch.mp4)
-
-<video width="320" height="240" controls>
-  <source src="assets/images/fav-and-watch.mp4" type="video/mp4">
-</video>
-
-How to go back to homepage:
-
-![Home Button](assets/images/interactive-logo.mp4)
-
 Movie Info Search Example:
 
 ![Movie Info Example](assets/images/movie-info.jpg)
+
+
+How to go back to homepage:
+
+https://github.com/auom-eisiad/Movie-Reels/assets/139652929/51b6af2c-d7eb-40de-ad58-801446e302bf
+
+How to use Search Function and Add buttons:
+
+https://github.com/auom-eisiad/Movie-Reels/assets/139652929/620e503f-638c-4662-a48e-90035073eb53
+
 
 
 ## Credits
