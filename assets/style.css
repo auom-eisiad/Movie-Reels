@@ -211,14 +211,34 @@ footer {
 
 /* MEDIA QUERY */
 @media screen and (max-width: 576px) {
+    input {
+        background-color: var(--grey);
+        justify-content: center;
+        line-height: 2rem;
+        font-family: var(--fontfam);
+        font-size: var(--ftsize);
+        margin-top: 5rem;
+        margin-bottom: 0;
+    }
+    .logo {
+        position: absolute;
+        top: 10px; /* Adjust the top position as needed */
+        left: 10px; /* Adjust the left position as needed */
+        margin-top: 0rem;
+        margin-left: 0rem;
+        margin-right: 20rem;
+    }
     .plot {
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
         text-align: center;
+        margin-top: -25rem;
     }
-}
-
-@media screen and (min-width: 576px) {
-    
+    .icons {
+        position: absolute;
+        z-index: 2;
+        margin-left: 2rem;
+        margin-top: -43rem;
+    }
 }

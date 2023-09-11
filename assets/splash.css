@@ -76,6 +76,7 @@ header {
     font-size: 5rem;
     font-family: var(--fontfam);
     color: var(--b);
+    text-shadow: #fff 3px 1px 10px;
 }
 
 #home {
@@ -100,12 +101,13 @@ header {
 @media screen and (max-width: 576px) {
     .quote {
         position: absolute;
-        top: 40%;
+        top: 50%;
         left: -15%;
         transform: translate(20%, -50%);
         font-size: 2.3rem;
         font-family: var(--fontfam);
         color: var(--b);
+        text-shadow: #fff 3px 1px 10px;
     }
 
     #home {
@@ -127,10 +129,11 @@ header {
     .quote {
         position: absolute;
         top: 48%;
-        left: 45%;
-        transform: translate(-40%, -50%);
+        left: 30%;
+        transform: translate(-20%, -50%);
         font-size: 5rem;
         font-family: var(--fontfam);
         color: var(--b);
+        text-shadow: #fff 3px 1px 10px;
     }
 }
