@@ -37,13 +37,13 @@ How to use Search Function and Add buttons:
 
 How to go back to homepage:
 
-     Home Button(assets/images/interactive-logo.mp4)
+     <a href= (assets/images/interactive-logo.mp4)= Home Button
 
 
 To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
 
     ```md
-    [alt text](assets/images/movie-info.jpg)
+    [alt text]assets/images/movie-info.jpg
     ```
 
 ## Credits
