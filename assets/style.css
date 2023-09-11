@@ -154,7 +154,15 @@ h2 {
     width: 60%; 
 }
 
-.hover-button:hover {
+.remove-btn {
+    padding: 0.3rem 0.7rem;
+    background-color: #b40404;
+    position: relative;
+    top: -2.1rem;
+    left: 7rem;
+}
+
+.remove-btn:hover {
     color: var(--w);
 }
 
