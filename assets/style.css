@@ -243,6 +243,10 @@ footer {
         text-align: center;
         margin-top: -25rem;
     }
+    .remove-btn {
+        top: -2.1rem;
+        left: 10.2rem;
+    }
     .icons {
         position: absolute;
         z-index: 2;
