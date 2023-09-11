@@ -29,29 +29,96 @@ N/A
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+Instructions:
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
+Movie Info Search Example:
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+![Movie Info Example](assets/images/movie-info.jpg)
+
+
+How to go back to homepage:
+
+https://github.com/auom-eisiad/Movie-Reels/assets/139652929/51b6af2c-d7eb-40de-ad58-801446e302bf
+
+How to use Search Function and Add buttons:
+
+https://github.com/auom-eisiad/Movie-Reels/assets/139652929/620e503f-638c-4662-a48e-90035073eb53
+
+
 
 ## Credits
 
-List your collaborators, if any, with links to their GitHub profiles.
+Collaborators:
 
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
+     Daisie Moua:  https://github.com/auom-eisiad
+     
+     Miguel Maldonado:   https://github.com/TrueMiguel
+     
+     Benjamin Palacpac:   https://github.com/BenPalac1
 
-If you followed tutorials, include links to those here as well.
+JQuery script files used: 
+
+    https://code.jquery.com/jquery-3.6.0.js"
+    
+    https://code.jquery.com/ui/1.13.2/jquery-ui.js"
+
+Fontawesome Library/ Toolkit script link:
+
+    https://kit.fontawesome.com/e1d81dddcf.js
+    
+Bulma CSS Library:
+
+    https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css
+
+Google Fonts used:
+
+     //fonts.googleapis.com"
+     
+     //fonts.gstatic.com"
+     
+    https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&display=swap
+
+OMDb API: 
+
+     http://www.omdbapi.com/?i=tt3896198&apikey=1df82d2f
+     
+Youtube API:
+
+     https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=
+
+Movie Poster API
+
+    https://api.themoviedb.org/3/search/movie?query=
+
+
+     
+
 
 ## License
 
-The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
+MIT License
+
+Copyright (c) 2023 Daisie Moua
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 ---
-
-🏆 The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
 
 ## Badges
 
@@ -71,8 +138,8 @@ Badges aren't necessary, per se, but they demonstrate street cred. Badges let ot
 
 ## How to Contribute
 
-If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
+N/A
 
 ## Tests
 
-Go the extra mile and write tests for your application. Then provide examples on how to run them here.
+N/A
