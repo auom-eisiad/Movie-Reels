@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en-US">
-    
-  <head>
+<html lang="en">
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -19,7 +19,6 @@
       crossorigin="anonymous"
     />
 
-    <!-- JQuery UI -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"/>
 
     <!-- added a shortcut icon as our website logo -->
@@ -29,91 +28,38 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="./assets/style.css"/>
+    <link rel="stylesheet" type="text/css" href="./assets/splash.css"/>
 
-    <title>Movie Reels</title>
-  </head>
-  
-  <body>
+    <title>Movie Reels: Home</title>
+</head>
 
-    <header class="is-flex is-flex-direction-row">
-      <h1 class="logo has-text-left"><img src="./assets/images/moviereellogo1.png"/></h1>
+<body>
 
-      <form id="movie-form" class="is-align-self-center" action="/action_page.php" onsubmit="return validateForm()" method="post" required>
-        <input type="text" id="movie-name" size="100px" placeholder="Search for movie">
-        <button type="submit" id="search"><i class="fas fa-search" style="color:#fff"></i></button>
-      </form>
-    </header>
+  <header>
+    <h1 class="logo has-text-centered"><img src="./assets/images/moviereellogo1.png"/></h1>
+  </header>
 
-    <div class="columns is-gapless">
+  <main>
+      <!-- background image -->
+      <div class="hero"></div>
 
-      <!-- Movies list -->
-      <div id="movie-list" class="column is-2 is-flex is-flex-direction-column">
-
-        <!-- Favorites -->
-        <h2 class="has-text-centered">Favorites</h2>
-        <p class="has-text-centered">Sort your Favorites!</p>
-        <ul id="favSortable" class="favs container has-text-centered is-align-self-center">
-        </ul>
-
-        <br>
-
-        <!-- Watch list -->
-        <h2 class="has-text-centered">Watch list</h2>
-        <p class="has-text-centered">Sort your watch list!</p>
-        <ul id="sortable" class="watch-list container has-text-centered is-align-self-center">
-        </ul>
+      <!-- catchphrase -->
+      <p class="quote">"If you build it, they will come."</p>
       
-      </div>
+      <!-- button to enter the webpage -->
+      <button id="home" class="button is-danger is-focused">W E L C O M E</button>
+  </main>
 
-      <main class="column is-10 has-text-centered">
-
-        <div id="postMovie" class="columns is-gapless is-multiline">
-
-          <!-- movie poster -->
-          <div class="poster-container">
-            <img class="poster is-sr-only" src="" alt="movie poster"/>
-          </div>
-
-            <div class="icons">
-            <!-- adding a watch list icon -->
-            <i id="watchIcon" class="watchLater fa-regular fa-star fa-xl is-sr-only" title = "Add to Watch List" style="color: #fcc200;" alt="watch list button icon"></i>
-
-            <!-- adding Favorite 'HEART' icon -->
-            <i id="favIcon" class="love fa-regular fa-heart fa-xl is-sr-only" title = "Add to Favorites" style="color: #cc0000;" alt="favorite list heart icon"></i>
-            </div>
-        </div>
-
-        <!-- movie title -->
-        <h2 id="title" class="is-sr-only">Movie Title Here</h2>
-
-          <!-- movie trailer -->
-          <iframe width="800" height="400" src="" 
-          title="YouTube video player" frameborder="1" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-          
-          <!-- movie plot -->
-          <div class="plot column is-8 has-text-centered">
-          </div>
-
-          <!-- movie rating -->
-          <div id="rating" class="">
-          </div>
-        
-      </main>
-    </div>
-
-    <!-- All script files used -->
+    <!-- scripts used -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-
-    <!-- added fontawesome script link -->
     <script src="https://kit.fontawesome.com/e1d81dddcf.js" crossorigin="anonymous"></script>
-    
-    <!-- <script src="//cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script> -->
-    <script src="./script.js"></script>
+    <script src="./enterpage.js"></script>
 
-    <footer class="has-text-centered">Powered by BST</footer>
-    </body>
+  </body>
+
+ <footer>
+  </footer>
+
  </html>
