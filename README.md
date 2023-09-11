@@ -29,7 +29,8 @@ N/A
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+Instructions
+
 
 To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
 
@@ -68,6 +69,15 @@ Google Fonts used:
      //fonts.gstatic.com"
      
     https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&display=swap
+
+OMDb API: 
+
+     http://www.omdbapi.com/?i=tt3896198&apikey=1df82d2f
+     
+Youtube API:
+
+     https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=
+     
 
 
 ## License
