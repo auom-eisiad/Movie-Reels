@@ -142,7 +142,7 @@ h2 {
 
 #favSortable {
     list-style-type: none; 
-    margin: 0; 
+    margin: 0rem; 
     padding: 0; 
     width: 60%; 
 }
@@ -154,7 +154,20 @@ h2 {
     width: 60%; 
 }
 
-.hover-button:hover {
+/* Override the Bulma CSS for the list element */
+.m-1 {
+    margin: 0!important;
+}
+
+.remove-btn {
+    padding: 0.3rem 0.7rem;
+    background-color: #b40404;
+    position: relative;
+    top: -2rem;
+    left: 7rem;
+}
+
+.remove-btn:hover {
     color: var(--w);
 }
 
@@ -234,6 +247,10 @@ footer {
         flex-wrap: wrap;
         text-align: center;
         margin-top: -25rem;
+    }
+    .remove-btn {
+        top: -2rem;
+        left: 10.2rem;
     }
     .icons {
         position: absolute;
