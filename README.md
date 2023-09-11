@@ -40,37 +40,24 @@ To add a screenshot, create an `assets/images` folder in your repository and upl
 ## Credits
 
 Collaborators:
-     - Daisie Moua:  https://github.com/auom-eisiad
-     - Miguel Maldonado:   https://github.com/TrueMiguel
-     - Benjamin Palacpac:   https://github.com/BenPalac1
+     Daisie Moua:  https://github.com/auom-eisiad
+     Miguel Maldonado:   https://github.com/TrueMiguel
+     Benjamin Palacpac:   https://github.com/BenPalac1
 
-All script files used: 
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+JQuery script files used: 
+    https://code.jquery.com/jquery-3.6.0.js"
+    https://code.jquery.com/ui/1.13.2/jquery-ui.js"
 
-    <!-- added fontawesome script link -->
-    <script src="https://kit.fontawesome.com/e1d81dddcf.js" crossorigin="anonymous"></script>
+Fontawesome Library/ Toolkit script link:
+    https://kit.fontawesome.com/e1d81dddcf.js
     
-    <!-- <script src="//cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script> -->
-
 Bulma CSS Library:
-    <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
-    rel="stylesheet"
-    integrity="sha384-HmYpsz2Aa9Gh3JlkCoh8kUJ2mUKJKTnkyC2Lzt8aLzpPOpnDe8KpFE2xNiBpMDou" 
-    crossorigin="anonymous"/>
-
-FontAwesome Icon Library/ Toolkit:
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-      crossorigin="anonymous"
-    />
+    https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css
 
 Google Fonts used:
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&display=swap" rel="stylesheet">
+     //fonts.googleapis.com"
+     //fonts.gstatic.com"
+    https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&display=swap
 
 
 ## License
