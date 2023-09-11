@@ -33,18 +33,20 @@ Instructions:
 
 How to use Search Function and Add buttons:
 
-     ![Search & Add](assets/images/fav-and-watch.mp4)
+![Search & Add](assets/images/fav-and-watch.mp4)
+
+<video width="320" height="240" controls>
+  <source src="assets/images/fav-and-watch.mp4" type="video/mp4">
+</video>
 
 How to go back to homepage:
 
-     ![Home Button](assets/images/interactive-logo.mp4)
+![Home Button](assets/images/interactive-logo.mp4)
 
+Movie Info Search Example:
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
+![Movie Info Example](assets/images/movie-info.jpg)
 
-    ```md
-    ![Movie Info Example](assets/images/movie-info.jpg)
-    ```
 
 ## Credits
 
