@@ -77,6 +77,12 @@ OMDb API:
 Youtube API:
 
      https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=
+
+Movie Poster API
+
+    https://api.themoviedb.org/3/search/movie?query=
+
+
      
 
 
