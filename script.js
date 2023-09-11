@@ -190,8 +190,8 @@ function movieTrailer(input) {
 
         // takes the first result and then update the iframe src with it
         trailerId = data.items[0].id.videoId
-        // trailerURL = 'https://www.youtube.com/embed/'+ trailerId + '?rel=0'
-        // movTrailerEl.attr('src', trailerURL)
+        trailerURL = 'https://www.youtube.com/embed/'+ trailerId + '?rel=0'
+        movTrailerEl.attr('src', trailerURL)
     });
 };
 
@@ -241,7 +241,7 @@ watchIconEl.on('click', function() {
             textContentWS = textContent.replace(/\s/g, "+");
             movieApi(textContentWS);
             moviePoster(textContentWS);
-            // movieTrailer(textContentWS);
+            movieTrailer(textContentWS);
             })
     
         watchIteration++
@@ -343,7 +343,7 @@ for (var i = 0; i < fetchedList.list.length ;i++) {
         textContentWS = textContent.replace(/\s/g, "+");
         movieApi(textContentWS);
         moviePoster(textContentWS);
-        // movieTrailer(textContentWS);
+        movieTrailer(textContentWS);
         })
 
 }
@@ -405,7 +405,7 @@ favIconEl.on('click', function() {
             textContentWS = textContent.replace(/\s/g, "+");
             movieApi(textContentWS);
             moviePoster(textContentWS);
-            // movieTrailer(textContentWS);
+            movieTrailer(textContentWS);
             })
     
         favIteration++
@@ -501,19 +501,16 @@ for (var i = 0; i < fetchedFav.list.length ;i++) {
         textContentWS = textContent.replace(/\s/g, "+");
         movieApi(textContentWS);
         moviePoster(textContentWS);
-        // movieTrailer(textContentWS);
+        movieTrailer(textContentWS);
         })
 
 }
 
 $('#favSortable').on('click', '.remove-btn', function() {
     var listItem = $(this).prev(); // Select the previous sibling (li element)
-    console.log(listItem)
     var listItemId = $(this).prev().attr('id') // gets the id of the list element
-    console.log(listItemId)
     
     fetchedFav.list = fetchedFav.list.filter(item => !item.hasOwnProperty(listItemId))
-    console.log(fetchedFav)
         
     listItem.remove();
     $(this).remove(); // Remove the clicked remove button
