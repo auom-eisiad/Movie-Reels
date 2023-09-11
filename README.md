@@ -29,7 +29,15 @@ N/A
 
 ## Usage
 
-Instructions
+Instructions:
+
+How to use Search Function and Add buttons:
+
+     ![Search & Add](assets/images/fav-and-watch.mp4)
+
+How to go back to homepage:
+
+     ![Home Button](assets/images/interactive-logo.mp4)
 
 
 To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
