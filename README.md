@@ -40,23 +40,33 @@ To add a screenshot, create an `assets/images` folder in your repository and upl
 ## Credits
 
 Collaborators:
+
      Daisie Moua:  https://github.com/auom-eisiad
+     
      Miguel Maldonado:   https://github.com/TrueMiguel
+     
      Benjamin Palacpac:   https://github.com/BenPalac1
 
 JQuery script files used: 
+
     https://code.jquery.com/jquery-3.6.0.js"
+    
     https://code.jquery.com/ui/1.13.2/jquery-ui.js"
 
 Fontawesome Library/ Toolkit script link:
+
     https://kit.fontawesome.com/e1d81dddcf.js
     
 Bulma CSS Library:
+
     https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css
 
 Google Fonts used:
+
      //fonts.googleapis.com"
+     
      //fonts.gstatic.com"
+     
     https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&display=swap
 
 
