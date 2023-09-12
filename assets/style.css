@@ -154,6 +154,10 @@ h2 {
     width: 60%; 
 }
 
+.ui-state-default {
+    cursor:pointer;
+}
+
 /* Override the Bulma CSS for the list element */
 .m-1 {
     margin: 0!important;
@@ -246,7 +250,6 @@ footer {
         flex-direction: column;
         flex-wrap: wrap;
         text-align: center;
-        margin-top: -25rem;
     }
     .remove-btn {
         top: -2rem;
